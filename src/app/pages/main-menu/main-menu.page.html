@@ -1,0 +1,87 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="tema">
+    <!-- <ion-button (click)="logout()" class="tema">
+      <ion-icon name="log-out"></ion-icon>
+    </ion-button> -->
+    
+      <ion-avatar (click)="home()" slot="end">
+        <img *ngIf="profile?.imageUrl; else placeholder_avatar;" [src]="profile.imageUrl" class="avatar"/>
+      </ion-avatar>
+      <ng-template #placeholder_avatar></ng-template>
+    
+    <ion-title>Menu</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding inihf">
+
+  <capacitor-google-maps #map></capacitor-google-maps>
+  
+  <!--<ion-button expand="block" (click)="tomarFoto()">Tomar Foto</ion-button>
+  <ion-img [src]="ruta"></ion-img>-->
+
+<!-- 
+  <ion-slides pager="true">
+    <ion-slide class="slide-1">
+      <img src="assets/img/perro.jpg" />
+    </ion-slide>
+
+    <ion-slide class="slide-2">
+      <img src="assets/img/gato.jpg" />
+      <h1></h1>
+    </ion-slide>
+
+    <ion-slide class="slide-3">
+      <img src="assets/img/ambos.jpg" />
+      <h1></h1>
+    </ion-slide>
+  </ion-slides> -->
+
+  
+
+  <ion-fab vertical="bottom" horizontal="end" edge slot="fixed">
+    <ion-fab-button color="success" >
+      <ion-icon name="home"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+
+  <ion-fab vertical="bottom" horizontal="start" edge slot="fixed">
+    <ion-fab-button color="tertiary">
+      <ion-icon name="location"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+    <ion-fab-button (click)="registraMascota()" color="warning">
+      <ion-icon name="paw"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+
+  <!-- <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+    <ion-fab-button color="danger">
+      <ion-icon name="paw"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button (click)="tomarFoto()"><ion-icon name="camera"></ion-icon></ion-fab-button>
+    </ion-fab-list>
+    <ion-fab-list side="start">
+      <ion-fab-button><ion-icon name="location"></ion-icon></ion-fab-button>
+    </ion-fab-list>
+    <ion-fab-list side="end">
+      <ion-fab-button (click)="presentFicha()"><ion-icon name="document-text"></ion-icon></ion-fab-button>
+    </ion-fab-list>
+  </ion-fab> -->
+
+
+</ion-content>
+
+
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar class="tema">
+    <ion-title ></ion-title>
+  </ion-toolbar>
+</ion-footer>

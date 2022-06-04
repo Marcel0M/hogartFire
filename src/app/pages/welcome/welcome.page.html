@@ -1,0 +1,37 @@
+<ion-content class="tema"> 
+  
+  <ion-slides pager="true">
+
+    <ion-slide *ngFor="let slide of slides" text-center>
+
+      <div class="slide-img-padding">
+        <img [src]="slide.img">
+      </div>
+      <div>
+        <h3 [innerHTML]="slide.titulo" ></h3>
+      </div>  
+
+    </ion-slide>
+
+  </ion-slides>
+
+</ion-content>
+
+
+<ion-footer class="ion-no-border">
+
+  <ion-toolbar class="tema">
+    <ion-grid>
+      <ion-row>
+        <button (click)="comenzar()" class="cta">
+          <span>Comenzar</span>
+          <svg viewBox="0 0 13 10" height="10px" width="15px">
+            <path d="M1,5 L11,5"></path>
+            <polyline points="8 1 12 5 8 9"></polyline>
+          </svg>
+        </button>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+    
+</ion-footer>

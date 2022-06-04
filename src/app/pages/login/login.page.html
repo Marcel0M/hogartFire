@@ -1,0 +1,27 @@
+<ion-header class="tema ion-no-border">
+  <ion-toolbar class="tema">
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding tema">
+
+  <ion-img  src="assets/img/login.png"></ion-img>
+
+  <form [formGroup]="credentials" (ngSubmit)="login()">
+    <ion-item fill="solid" class=" tema ion-margin-bottom">
+      <ion-icon name="person-outline" slot="start"></ion-icon>
+      <ion-input type="email" placeholder="Email" formControlName="email"></ion-input>
+      <ion-note slot="error" *ngIf="(email.dirty || email.touched) && email.errors">Email es invalido</ion-note>
+    </ion-item>
+
+    <ion-item fill="solid" class="tema ion-margin-bottom">
+      <ion-icon name="key-outline" slot="start"></ion-icon>
+      <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
+      <ion-note slot="error" *ngIf="(password.dirty || password.touched) && password.errors">Password necesita mas de 6 caracteres</ion-note>
+    </ion-item>
+
+    <ion-button expand="block" type="submit" [disabled]="!credentials.valid">Login</ion-button>
+    <ion-button expand="block" color="warning" type="button" (click)="register()">Crear Cuenta</ion-button>
+  </form>
+</ion-content>
