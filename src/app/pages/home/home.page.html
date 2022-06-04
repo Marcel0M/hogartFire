@@ -1,13 +1,10 @@
-<ion-header class="ion-no-border">
+<!-- <ion-header class="ion-no-border">
   <ion-toolbar class="tema">
 
     <ion-button (click)="logout()" class="tema" slot="end">
       <ion-icon name="log-out"></ion-icon>
     </ion-button>
     <ion-buttons slot="start">
-      <!-- <ion-button (click)="logout()">
-        <ion-icon slot="icon-only" name="log-out"></ion-icon>
-      </ion-button> -->
       <ion-back-button slot="start" defaultHref="main-menu" mode="ios" color="dark" text="Atras"></ion-back-button>
     </ion-buttons>
     <ion-title> Mi perfil </ion-title>
@@ -26,4 +23,85 @@
       </ng-template>
     </ion-avatar>
   </div>
+</ion-content>
+ -->
+
+ <ion-content [fullscreen]="true">
+
+  <ion-toolbar class="tema"> <!-- color="primary" -->
+    <ion-buttons slot="start">
+     <ion-menu-button></ion-menu-button>
+     <ion-back-button defaultHref="main-menu" color="light" text="Atras"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button color="light" fill="clear">EDITAR</ion-button>
+     </ion-buttons>
+  </ion-toolbar>
+  <ion-grid class="main-header">
+    <div align="center">
+      <ion-avatar (click)="changeImage()">
+        <img *ngIf="profile?.imageUrl; else placeholder_avatar;" [src]="profile.imageUrl" />
+        <ng-template #placeholder_avatar>
+          <div class="fallback">
+            <p>Selecciona Foto</p>
+          </div>
+        </ng-template>
+      </ion-avatar>
+    </div>
+  </ion-grid>
+
+  <ion-row class="ion-padding-horizontal">
+    <ion-col size="6">
+      <ion-item lines="none" class="ion-text-center">
+        <ion-icon name="paw" color="danger"></ion-icon>
+        <ion-label>
+          5
+          <p>Reportes</p>
+        </ion-label>
+      </ion-item>
+    </ion-col>
+    <ion-col size="6">
+      <ion-item lines="none" class="ion-text-center">
+        <ion-icon name="trophy" color="danger"></ion-icon> <!-- trophy -->
+        <ion-label>
+          14
+          <p>Premios</p>
+        </ion-label>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+  <ion-list lines="full">
+    <ion-item>
+      <ion-label>
+        <ion-text>Nombre</ion-text>
+        <p><ion-text color="dark">Obi Wan</ion-text></p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <ion-text>Telefono</ion-text>
+        <p><ion-text color="dark">+569 </ion-text></p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <ion-text>Email</ion-text>
+        <p><ion-text color="dark">kenobi2007@gmail.com</ion-text></p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <ion-text>Edad</ion-text>
+        <p><ion-text color="dark">49 Años</ion-text></p>
+      </ion-label>
+    </ion-item>
+    <!-- <ion-item>
+      <ion-label>
+        <ion-text>Address</ion-text>
+        <p><ion-text color="dark">India</ion-text></p>
+      </ion-label>
+    </ion-item> -->
+  </ion-list>
+
 </ion-content>
