@@ -1,0 +1,7 @@
+{
+  "name": "hogartFire",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
