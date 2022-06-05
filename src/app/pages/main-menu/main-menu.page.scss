@@ -14,15 +14,22 @@ capacitor-google-maps {
         position: absolute;
         bottom: 0;
         width: 100%;        
-        --background: rgba(255, 255, 255, 0.925);
+        --background: transparent;/*  rgba(255, 255, 255, 0.925); */
         border-radius: 20px 20px 0 0;
         ion-tab-button {
-            --background: transparent;
+            --background: var(--ion-color-white);/* transparent; */
             --color: var(--ion-color-medium);
             --color-selected: var(--ion-color-dark);
             ion-icon {
                 font-size: 1.5rem;
             }
         }
+    }
+    svg {
+      width: 80px;
+      margin-top: 16px;
+      path {
+        fill: var(--ion-color-white);
+      }
     }
 }
