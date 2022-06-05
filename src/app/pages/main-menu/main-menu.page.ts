@@ -42,16 +42,10 @@ export class MainMenuPage implements OnInit {
     }
 
   ngOnInit() {
-    /* this.presentLoading(); */
     this.interaction.cargarLoading();
   }
 
-  /* showLoading(){
-    this.interaction.showLoading();
-    setTimeout(_ => {
-      this.interaction.dismissLoading();
-    }, 3000);
-  } */
+
 
   ngAfterViewInit() {
     this.createMap();
@@ -107,7 +101,7 @@ export class MainMenuPage implements OnInit {
     await loading.present();
 
     const { role, data } = await loading.onDidDismiss();
-    console.log('Loading dismissed!');
+    console.log('HOGAR-TEMPORAL: CARGA FINALIZADA');
   }
 
 //FUNCIONES NAVEGACION
