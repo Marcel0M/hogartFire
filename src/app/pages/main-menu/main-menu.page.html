@@ -37,9 +37,14 @@
     </ion-slide>
   </ion-slides> -->
 
+
+
+
+
+
   
 
-  <ion-fab vertical="bottom" horizontal="end" edge slot="fixed">
+ <!--  <ion-fab vertical="bottom" horizontal="end" edge slot="fixed">
     <ion-fab-button color="success" >
       <ion-icon name="home"></ion-icon>
     </ion-fab-button>
@@ -57,7 +62,14 @@
     <ion-fab-button (click)="registraMascota()" color="warning">
       <ion-icon name="paw"></ion-icon>
     </ion-fab-button>
-  </ion-fab>
+  </ion-fab> -->
+
+
+
+
+
+
+
 
 
   <!-- <ion-fab vertical="bottom" horizontal="center" slot="fixed">
@@ -74,14 +86,17 @@
       <ion-fab-button (click)="presentFicha()"><ion-icon name="document-text"></ion-icon></ion-fab-button>
     </ion-fab-list>
   </ion-fab> -->
-
-
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button>
+        <ion-icon name="home-outline"></ion-icon>
+      </ion-tab-button>
+      <ion-tab-button>
+        <ion-icon name="film-outline"></ion-icon>
+      </ion-tab-button>
+      <ion-tab-button (click)="home()">
+        <ion-icon name="person-outline"></ion-icon>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
 </ion-content>
-
-
-
-<ion-footer class="ion-no-border">
-  <ion-toolbar class="tema">
-    <ion-title ></ion-title>
-  </ion-toolbar>
-</ion-footer>
