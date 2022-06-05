@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { AuthService } from '../../services/auth.service';
+import { InteractionService } from 'src/app/services/interaction.service';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,8 @@ export class LoginPage implements OnInit {
     private loadingController: LoadingController,
     private alertController: AlertController,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private interaction: InteractionService
   ) {}
 
   // Easy access for form fields
@@ -46,7 +48,8 @@ export class LoginPage implements OnInit {
     if (user) {
       this.router.navigateByUrl('/home', { replaceUrl: true });
     } else {
-      this.showAlert('Registro Fallido', 'Por Favor intentalo nuevamente!');
+      /* this.showAlert('Registro Fallido', 'Por Favor intentalo nuevamente!'); */
+      this.interaction.showAlert('Registro Fallido', 'Por Favor intentalo nuevamente!', ['OK']);
     }
   }
 
@@ -60,16 +63,16 @@ export class LoginPage implements OnInit {
     if (user) {
       this.router.navigateByUrl('/main-menu', { replaceUrl: true });
     } else {
-      this.showAlert('Login Fallido', 'Por Favor intentalo nuevamente!');
+      this.interaction.showAlert('Login Fallido', 'Por Favor intentalo nuevamente!', ['OK']);
     }
   }
 
-  async showAlert(header, message) {
+  /* async showAlert(header, message) {
     const alert = await this.alertController.create({
       header,
       message,
       buttons: ['OK'],
     });
     await alert.present();
-  }
+  } */
 }

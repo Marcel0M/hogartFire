@@ -7,6 +7,7 @@ import { AvatarService } from 'src/app/services/avatar.service';
 
 import { GoogleMap } from '@capacitor/google-maps';
 import { environment } from 'src/environments/environment';
+import { InteractionService } from 'src/app/services/interaction.service';
 
 @Component({
   selector: 'app-main-menu',
@@ -32,15 +33,25 @@ export class MainMenuPage implements OnInit {
     public navController: NavController,
     public loadingController: LoadingController,
     private authService: AuthService,
+    private interaction: InteractionService
     ) { 
       this.avatarService.getUserProfile().subscribe((data) => {
         this.profile = data;
+        
       });
     }
 
   ngOnInit() {
-    this.presentLoading();
+    /* this.presentLoading(); */
+    this.interaction.cargarLoading();
   }
+
+  /* showLoading(){
+    this.interaction.showLoading();
+    setTimeout(_ => {
+      this.interaction.dismissLoading();
+    }, 3000);
+  } */
 
   ngAfterViewInit() {
     this.createMap();

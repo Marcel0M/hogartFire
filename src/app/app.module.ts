@@ -16,6 +16,10 @@ import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { FirestoreService } from './services/firestore.service';
+import { InteractionService } from './services/interaction.service';
+import { AvatarService } from './services/avatar.service';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -40,7 +44,12 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+  FirestoreService,
+  InteractionService,
+  AvatarService,
+  AuthService
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

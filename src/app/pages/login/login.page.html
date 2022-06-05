@@ -21,7 +21,15 @@
       <ion-note slot="error" *ngIf="(password.dirty || password.touched) && password.errors">Password necesita mas de 6 caracteres</ion-note>
     </ion-item>
 
-    <ion-button expand="block" type="submit" [disabled]="!credentials.valid">Login</ion-button>
-    <ion-button expand="block" color="warning" type="button" (click)="register()">Crear Cuenta</ion-button>
+    <ion-button expand="block" shape="round" color="tertiary" type="submit" [disabled]="!credentials.valid" style="margin-bottom: 3%">Ingresar</ion-button>
+    <ion-button expand="block" shape="round" color="danger" type="button" (click)="register()">Crear Cuenta</ion-button>
   </form>
+
+  
 </ion-content>
+<ion-footer class="tema">
+  <ion-toolbar class="tema" style="display: inline-block; color:rgb(223, 222, 222)">
+    <ion-title class="tema" style="font-size: 15px; display: inline-block;">@Yerko Tolosa</ion-title>
+    <ion-title class="tema" style="font-size: 15px; display: inline-block; margin-left: 5%;">@Marcelo Morales</ion-title>
+  </ion-toolbar>
+</ion-footer>

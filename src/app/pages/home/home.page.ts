@@ -2,9 +2,11 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { AlertController, LoadingController } from '@ionic/angular';
+import { users } from 'src/app/models/models';
 import { AuthService } from 'src/app/services/auth.service';
 import { AvatarService } from 'src/app/services/avatar.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
+import { InteractionService } from 'src/app/services/interaction.service';
 
 @Component({
   selector: 'app-home',
@@ -20,7 +22,8 @@ export class HomePage {
     private router: Router,
     private loadingController: LoadingController,
     private alertController: AlertController,
-    private firestore: FirestoreService
+    private firestore: FirestoreService,
+    private interaction: InteractionService
   ) {
     this.avatarService.getUserProfile().subscribe((data) => {
       this.profile = data;
@@ -29,8 +32,16 @@ export class HomePage {
 
   ngOnInit(){
     this.getUsuarios();
+    this.interaction.cargarLoading();
   }
 
+  /* showLoading(){
+    this.interaction.showLoading();
+    setTimeout(_ => {
+      this.interaction.dismissLoading();
+    }, 3000);
+  }
+ */
   getUsuarios(){
     this.firestore.readCollection()
   }
@@ -70,4 +81,21 @@ export class HomePage {
       console.log("HOGAR-TEMPORAL: IMAGEN CARGADA CORRECTAMENTE");
     }
   }
+
+  modificarUsuario(){
+    const resultado: users = {
+    uid: '',
+    correo: "string",
+    nombre: "string",
+    apellido: "string",
+    direccion: "string",
+    fecha_nacimiento: "string",
+    sexo: "M"
+    }
+    const path = 'users';
+    this.firestore.createDocument(resultado, path, 'test').then( (res) => {
+      console.log('HOGAR-TEMPORAL: ', res);
+    });
+  }
+
 }

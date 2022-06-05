@@ -15,7 +15,7 @@ export class FirestoreService {
 createDocument(data: any, path: string, id: string){
   const collection = this.firestore.collection(path);
   console.log("HOGAR-TEMPORAL: ", data);
-  return collection.doc(id).set(data)
+  return collection.doc(id).set(data);
 }
 
 readCollection(){
