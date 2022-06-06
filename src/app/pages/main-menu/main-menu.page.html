@@ -22,8 +22,8 @@
   <ion-tab-bar slot="bottom">
 
     
-    <ion-tab-button> <!-- tab="home" -->
-      <ion-icon [name]="selectTab == 'home' ? 'home' : 'home-outline'"></ion-icon>
+    <ion-tab-button (click)="testeandoID()"> <!-- tab="home" -->
+      <ion-icon (click)="testeandoID()" [name]="selectTab == 'home' ? 'home' : 'home-outline'"></ion-icon>
     </ion-tab-button>
 
    <!--  <ion-tab-button tab="search" class="search">

@@ -115,5 +115,8 @@ export class MainMenuPage implements OnInit {
     this.navController.navigateRoot('home')
   }
 
+  async testeandoID(){
+    await this.authService.test()
+  }
 
 }
