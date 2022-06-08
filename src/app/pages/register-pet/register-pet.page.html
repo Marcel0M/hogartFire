@@ -13,7 +13,7 @@
   <ion-grid class="main-header">
     <div align="center">
       <ion-avatar (click)="changePhoto()">
-        <img *ngIf="profile?.photoUrl; else placeholder_avatar;" [src]="profile.photoUrl" />
+        <img *ngIf="pet?.photoUrl; else placeholder_avatar;" [src]="pet.photoUrl" />
         <ng-template #placeholder_avatar>
           <div class="fallback">
             <p>Selecciona Foto</p>

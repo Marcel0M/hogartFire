@@ -32,6 +32,7 @@ export class AuthService {
 test(){
   const id = this.auth.currentUser.uid;
   console.log(id);
+  return id;
 }
 
   logout() {

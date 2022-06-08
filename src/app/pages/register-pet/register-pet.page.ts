@@ -7,6 +7,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { AvatarService } from 'src/app/services/avatar.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { InteractionService } from 'src/app/services/interaction.service';
+import { reporte } from 'src/app/models/models';
 
 @Component({
   selector: 'app-register-pet',
@@ -69,6 +70,21 @@ export class RegisterPetPage implements OnInit {
   }
 
 
+  registrarPet(){
+    const resultado: reporte = {
+    uid: '',
+    url: "",
+    raza: "string",
+    color: "string",
+    temperamento: "string",
+    sexo: "M"
+    }
+    const path = 'users';
+    const usuario = this.authService.test()
+    this.firestore.createDocument(resultado, path, usuario).then( (res) => {
+      console.log('HOGAR-TEMPORAL: ', res);
+    });
+  }
 
 
 }

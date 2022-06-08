@@ -1,3 +1,5 @@
+import { TestBed } from "@angular/core/testing";
+
 export interface users{
     uid: string;
     correo: string;
@@ -5,6 +7,18 @@ export interface users{
     apellido: string;
     direccion: string;
     fecha_nacimiento: string;
+    sexo: 'M' | 'F';
+    /* imageUrl: Storage; */
+}
+
+
+
+export interface reporte{
+    uid: string;
+    url: string;
+    raza: string;
+    color: string;
+    temperamento: string;
     sexo: 'M' | 'F';
     /* imageUrl: Storage; */
 }
