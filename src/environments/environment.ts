@@ -14,7 +14,7 @@ export const environment = {
     measurementId: 'G-N5T2W4M085',
   },
   production: false,
-  apiKey: 'AIzaSyAg-oZFveCX-c12Ymc95jstr5VULGvtEpo',
+  apiKeyMaps: 'AIzaSyAg-oZFveCX-c12Ymc95jstr5VULGvtEpo',
 };
 
 /*

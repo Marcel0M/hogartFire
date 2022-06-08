@@ -1,0 +1,53 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="tema">
+    <ion-title>Registro Mascota</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      <ion-back-button defaultHref="main-menu" color="light" text="Atras"></ion-back-button>
+     </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="tema">
+
+  <ion-grid class="main-header">
+    <div align="center">
+      <ion-avatar (click)="changePhoto()">
+        <img *ngIf="profile?.photoUrl; else placeholder_avatar;" [src]="profile.photoUrl" />
+        <ng-template #placeholder_avatar>
+          <div class="fallback">
+            <p>Selecciona Foto</p>
+          </div>
+        </ng-template>
+      </ion-avatar>
+    </div>
+  </ion-grid>
+
+  <ion-item class="ion-padding tema">
+    <ion-label class="letra-input" position="floating">Tipo De Animal</ion-label>
+    <ion-input  type="text"></ion-input>
+  </ion-item>
+  <ion-item class="ion-padding tema">
+    <ion-label class="letra-input" position="floating">Sexo</ion-label>
+    <ion-input  type="text"></ion-input>
+  </ion-item>
+  <ion-item class="ion-padding tema">
+    <ion-label class="letra-input" position="floating">Raza</ion-label>
+    <ion-input  type="text"></ion-input>
+  </ion-item>
+  <ion-item class="ion-padding tema">
+    <ion-label class="letra-input" position="floating">Color</ion-label>
+    <ion-input  type="text"></ion-input>
+  </ion-item>
+  <ion-item class="ion-padding tema">
+    <ion-label class="letra-input" position="floating">Temperamento</ion-label>
+    <ion-input  type="text"></ion-input>
+  </ion-item>
+  <ion-item class="ion-padding tema">
+    <ion-label class="letra-input" position="floating">Tamaño</ion-label>
+    <ion-input  type="text"></ion-input>
+  </ion-item>
+
+  <ion-button  color="warning" class="ion-margin letra-boton" expand="block">Registrar Mascota</ion-button>
+
+</ion-content>

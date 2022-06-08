@@ -25,10 +25,10 @@
   </div>
 </ion-content>
  -->
-
- <ion-content [fullscreen]="true">
-
-  <ion-toolbar class="tema"> <!-- color="primary" -->
+<ion-header class="ion-no-border">
+  
+  <ion-toolbar class="tema">
+    <ion-title> Mi perfil </ion-title>
     <ion-buttons slot="start">
      <ion-menu-button></ion-menu-button>
      <ion-back-button defaultHref="main-menu" color="light" text="Atras"></ion-back-button>
@@ -37,6 +37,11 @@
       <ion-button color="light" fill="clear">EDITAR</ion-button>
      </ion-buttons>
   </ion-toolbar>
+
+</ion-header>
+
+ <ion-content [fullscreen]="true">
+
   <ion-grid class="main-header">
     <div align="center">
       <ion-avatar (click)="changeImage()">
@@ -96,18 +101,7 @@
         <p><ion-text color="dark">49 Años</ion-text></p>
       </ion-label>
     </ion-item>
-    <ion-footer>
-      <ion-toolbar>
-        <ion-title></ion-title>
-        <ion-title></ion-title>
-        <ion-title></ion-title>
-        <ion-button (click)="logout()" shape="round" expand="block" color="danger">
-          <ion-icon name="log-out"></ion-icon>
-        <!-- <ion-icon slot="icon-only" name="log-out"></ion-icon> -->
-          CERRAR SESION
-        </ion-button>
-      </ion-toolbar>
-    </ion-footer>
+    
 
     <!-- <ion-item>
       <ion-label>
@@ -118,3 +112,16 @@
   </ion-list>
 
 </ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-title></ion-title>
+    <ion-title></ion-title>
+    <ion-title></ion-title>
+    <ion-button (click)="logout()" shape="round" expand="block" color="danger">
+      <ion-icon slot="end" name="log-out"></ion-icon>
+    <!-- <ion-icon slot="icon-only" name="log-out"></ion-icon> -->
+      CERRAR SESION
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

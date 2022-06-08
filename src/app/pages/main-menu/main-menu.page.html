@@ -11,8 +11,12 @@
 
 <ion-content class="ion-padding inihf">
   <capacitor-google-maps #map></capacitor-google-maps>
+</ion-content>
 
-<ion-tabs #tabs>
+
+<ion-footer>
+
+  <ion-tabs #tabs>
   <ion-fab vertical="bottom" horizontal="center" translucent="true">
     <ion-fab-button>
       <ion-icon name="add-outline"></ion-icon>
@@ -23,26 +27,31 @@
 
     
     <ion-tab-button (click)="testeandoID()"> <!-- tab="home" -->
-      <ion-icon (click)="testeandoID()" [name]="selectTab == 'home' ? 'home' : 'home-outline'"></ion-icon>
+
+     <!--  <ion-icon (click)="testeandoID()" [name]="selectTab == 'home' ? 'home' : 'home-outline'"></ion-icon> -->
+
     </ion-tab-button>
 
    <!--  <ion-tab-button tab="search" class="search">
       <ion-icon [name]="selectTab == 'search' ? 'search' : 'search-outline'"></ion-icon>
     </ion-tab-button> -->
 
-
-    <svg height="50" viewBox="0 0 100 50" width="100" xmlns="http://www.w3.org/2000/svg">
+  <ion-button (click)="toRegisterPet()">
+    <svg (click)="toRegisterPet()" height="50" viewBox="0 0 100 50" width="100" xmlns="http://www.w3.org/2000/svg"> 
       <path d="M100 0v50H0V0c.543 27.153 22.72 49 50 49S99.457 27.153 99.99 0h.01z" 
-        fill="red" fill-rule="evenodd">
+        fill="red" fill-rule="evenodd" >
       </path>
     </svg>
+  </ion-button>
 
    <!--  <ion-tab-button tab="wishlist" class="wishlist">
       <ion-icon [name]="selectTab == 'wishlist' ? 'heart' : 'heart-outline'"></ion-icon>
     </ion-tab-button> -->
  
     <ion-tab-button (click)="home()"> <!-- tab="profile"  -->
-      <ion-icon (click)="home()" [name]="selectTab == 'profile' ? 'person' : 'person-outline'"></ion-icon>
+     <!--  <ion-icon (click)="home()" [name]="selectTab == 'profile' ? 'person' : 'person-outline'"></ion-icon> -->
+
+
    <!--    <ion-avatar (click)="home()">
         <img *ngIf="profile?.imageUrl; else placeholder_avatar;" [src]="profile.imageUrl" class="avatar"/>
       </ion-avatar>
@@ -53,4 +62,5 @@
 
 </ion-tabs>
 
-</ion-content>
+</ion-footer>
+

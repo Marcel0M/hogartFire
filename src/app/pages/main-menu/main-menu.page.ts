@@ -45,8 +45,6 @@ export class MainMenuPage implements OnInit {
     this.interaction.cargarLoading();
   }
 
-
-
   ngAfterViewInit() {
     this.createMap();
 
@@ -56,7 +54,7 @@ export class MainMenuPage implements OnInit {
     this.newMap = await GoogleMap.create({
       id: 'capacitor-google-maps',
       element: this.mapRef.nativeElement,
-      apiKey: environment.apiKey,
+      apiKey: environment.apiKeyMaps,
       config: {
         center: this.center,
         zoom: 8,
@@ -113,6 +111,11 @@ export class MainMenuPage implements OnInit {
   home() {
     this.router.navigate(['/home']);
     this.navController.navigateRoot('home')
+  }
+
+  toRegisterPet() {
+    this.router.navigate(['/register-pet']);
+    this.navController.navigateRoot('register-pet')
   }
 
   async testeandoID(){

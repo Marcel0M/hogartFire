@@ -35,7 +35,11 @@ const routes: Routes = [
   {
     path: 'main-menu',
     loadChildren: () => import('./pages/main-menu/main-menu.module').then( m => m.MainMenuPageModule)
+  },  {
+    path: 'register-pet',
+    loadChildren: () => import('./pages/register-pet/register-pet.module').then( m => m.RegisterPetPageModule)
   },
+
 ];
 
 @NgModule({
