@@ -1,54 +1,56 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
 import { NavController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
 import { AvatarService } from 'src/app/services/avatar.service';
-
-//import { GoogleMap } from '@capacitor/google-maps';
-import { environment } from 'src/environments/environment';
 import { InteractionService } from 'src/app/services/interaction.service';
 
-@Component({
-  selector: 'app-main-menu',
-  templateUrl: './main-menu.page.html',
-  styleUrls: ['./main-menu.page.scss'],
-})
-export class MainMenuPage implements OnInit {
+import { GoogleMap } from '@capacitor/google-maps';
+import { environment } from 'src/environments/environment';
 
-  /* @ViewChild('map') mapRef: ElementRef<HTMLElement>;
+
+
+@Component({
+  selector: 'app-home-pet',
+  templateUrl: './home-pet.page.html',
+  styleUrls: ['./home-pet.page.scss'],
+})
+export class HomePetPage implements OnInit {
+
+  @ViewChild('map') mapRef: ElementRef<HTMLElement>;
   newMap: GoogleMap;
   center: any = {
     lat: -33.404015,
     lng: -70.7400601,
-  }; */
+  };
 
-  //markerId: string;
-
-  ruta: string = '';
+  markerId: string;
   profile = null;
 
-  constructor(private router: Router,
+  constructor(
+    private router: Router,
     private avatarService: AvatarService,
     public navController: NavController,
     public loadingController: LoadingController,
     private authService: AuthService,
     private interaction: InteractionService
-    ) { 
-      this.avatarService.getUserProfile().subscribe((data) => {
-        this.profile = data;
-        
-      });
-    }
+  ) {
+    this.avatarService.getUserProfile().subscribe((data) => {
+      this.profile = data;
+      
+    });
+   }
 
   ngOnInit() {
     this.interaction.cargarLoading();
   }
 
-  /* ngAfterViewInit() {
+  ngAfterViewInit() {
     this.createMap();
   }
-  
+
+
   //FUNCION CREAR MAPA
   async createMap() {
     this.newMap = await GoogleMap.create({
@@ -79,13 +81,8 @@ export class MainMenuPage implements OnInit {
   //REMUEVE MARCA DEL MAPA
   async removeMarker() {
     await this.newMap.removeMarker(this.markerId);
-  } */
+  }
 
-  //FUNCION CERRAR SESION
-  /* async logout() {
-    await this.authService.logout();
-    this.router.navigateByUrl('login', { replaceUrl: true });
-  } */
 
 
    //FUNCION QUE CARGA PAGINA
@@ -102,29 +99,11 @@ export class MainMenuPage implements OnInit {
     console.log('HOGAR-TEMPORAL: CARGA FINALIZADA');
   }
 
-//FUNCIONES NAVEGACION
+
+  //FUNCIONES NAVEGACION
   toHome() {
     this.router.navigate(['/home']);
     this.navController.navigateRoot('home')
-  }
-
-  toRegisterPet() {
-    this.router.navigate(['/register-pet']);
-    this.navController.navigateRoot('register-pet')
-  }
-
-  toHomePet() {
-    this.router.navigate(['/home-pet']);
-    this.navController.navigateRoot('home-pet')
-  }
-
-  toProfilePet() {
-    this.router.navigate(['/profile-pet']);
-    this.navController.navigateRoot('profile-pet')
-  }
-
-  async testeandoID(){
-    await this.authService.test()
   }
 
 }

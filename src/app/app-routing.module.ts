@@ -39,6 +39,14 @@ const routes: Routes = [
     path: 'register-pet',
     loadChildren: () => import('./pages/register-pet/register-pet.module').then( m => m.RegisterPetPageModule)
   },
+  {
+    path: 'home-pet',
+    loadChildren: () => import('./pages/home-pet/home-pet.module').then( m => m.HomePetPageModule)
+  },
+  {
+    path: 'profile-pet',
+    loadChildren: () => import('./pages/profile-pet/profile-pet.module').then( m => m.ProfilePetPageModule)
+  },
 
 ];
 
