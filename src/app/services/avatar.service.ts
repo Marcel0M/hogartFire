@@ -3,8 +3,10 @@ import { Auth } from '@angular/fire/auth';
 import { doc, docData, Firestore, setDoc } from '@angular/fire/firestore';
 import {getDownloadURL,ref,Storage,uploadString,} from '@angular/fire/storage';
 import { Photo } from '@capacitor/camera';
-import { users } from '../models/models';
 import { AuthService } from './auth.service';
+import { finalize } from 'rxjs/operators';
+import { FirestoreService } from './firestore.service';
+
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +18,8 @@ export class AvatarService {
     private auth: Auth,
     private firestore: Firestore,
     private storage: Storage,
-    private authService: AuthService
+    private authService: AuthService,
+    private firestoreService: FirestoreService
   ) {}
 
   getUserProfile() {
@@ -52,28 +55,32 @@ export class AvatarService {
   }
 
 
-
-  // STORAGE 
-    // --> UID 
-      // reporte + contador 
-        // 1.png
-        // 2.png
-        // 3.png
-        // 4.png
-
-// Reportes 
-  // UID
-    // ImgUrl + contador 
-      // ImgUrl1
-      // ImgUrl2
+/*   uploadImage2(file: any, path: string, nombre: string): Promise<string> {
+    return new Promise(  resolve => {
+        const filePath = path + '/' + nombre;
+        const ref = this.storage.  ref(filePath);
+        const task = ref.put(file);
+        task.snapshotChanges().pipe(
+          finalize(  () => {
+                ref.getDownloadURL().subscribe( res => {
+                  const downloadURL = res;
+                  resolve(downloadURL);
+                  return;
+                });
+          })
+       )
+      .subscribe();
+    });
+}
+ */
       
 
 //FUNCION QUE SUBE FOTO DE MASCOTA
   async uploadPhoto(cameraFile: Photo) {
     const user = this.auth.currentUser;
+    const randomid = this.firestoreService.createRandomID();
     const userContador = user + '1';
-    const path = `uploads/reportes/${user.uid}/${userContador} + ".png"`;
-   /*  const path = `uploads/reportes/${user.uid}/profile.png`; */
+    const path = `uploads/reportes/${randomid}/imagen.png`;
     const storageRef = ref(this.storage, path);
 
     try {
@@ -83,7 +90,6 @@ export class AvatarService {
       const uid = this.auth.currentUser.uid
 
       const userDocRef = doc(this.firestore, `reportes/${uid}`);
-      /* const userDocRef = doc(this.firestore, `users/${user.uid}`); */
       await setDoc(userDocRef, {photoUrl, uid});
       return true;
     } catch (e) {

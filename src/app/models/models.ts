@@ -22,5 +22,7 @@ export interface reporte{
     color: string;
     temperamento: string;
     tamano: string; 
+    lat: number;
+    lon: number;
     /* imageUrl: Storage; */
 }

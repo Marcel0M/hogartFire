@@ -25,4 +25,11 @@ readCollection(){
   });
 }
 
+createRandomID(){
+  return this.firestore.createId()
+}
+
+
+
+
 }

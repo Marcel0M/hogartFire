@@ -2,14 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { AlertController, LoadingController } from '@ionic/angular';
-import { users } from 'src/app/models/models';
 import { AuthService } from 'src/app/services/auth.service';
 import { AvatarService } from 'src/app/services/avatar.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { InteractionService } from 'src/app/services/interaction.service';
 import { reporte } from 'src/app/models/models';
-import { GeolocationPlugin } from '@capacitor/geolocation';
-import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@awesome-cordova-plugins/native-geocoder/ngx';
+import { Geolocation, GeolocationOptions } from '@awesome-cordova-plugins/geolocation/ngx';
 
 
 @Component({
@@ -19,99 +17,65 @@ import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@aw
 })
 export class RegisterPetPage implements OnInit {
 
-  options: NativeGeocoderOptions = {
-    useLocale: true, 
-    maxResults: 5
-  }
-
-
   data: reporte = {
-    uid: '',
+    uid: "",
     url: "",
-    tipo:'',
-    sexo: '',
+    tipo: "",
+    sexo: "",
     raza: "",
     color: "",
     temperamento: "",
-    tamano: ''
-
+    tamano: "",
+    lat: 0,
+    lon: 0,
   }
 
-
+  uid = '';
+  lat = 0;
+  lon = 0;
+  alt : number;
+  accur: number;
+  options : GeolocationOptions;
   pet = null;
-
-   
-
 
   constructor(
     private avatarService: AvatarService,
     private authService: AuthService,
-    private router: Router,
     private loadingController: LoadingController,
     private alertController: AlertController,
     private firestore: FirestoreService,
     private interaction: InteractionService,
-    private geolocation: GeolocationPlugin,
-    private nativegeocoder: NativeGeocoder
+    private geolocation: Geolocation
     
   ) 
   {
+    this.options = {
+      enableHighAccuracy : true
+    };
+  
+      this.geolocation.getCurrentPosition(this.options).then((resp) => {
+        this.lat = resp.coords.latitude;
+        this.lon = resp.coords.longitude;
+        console.log('HOGAR-TEMPORAL: Latitud : ', resp.coords.latitude);
+        console.log('HOGAR-TEMPORAL: Longitud: ', resp.coords.longitude);
+      }).catch((error) => {
+        console.log('HOGAR-TEMPORAL: Error al obtener tu ubicacion', error);
+      });
+
+
     this.avatarService.getPet().subscribe((data) => {
       this.pet = data;
     });
    }
 
-   
+
 
   ngOnInit() {
     this.interaction.cargarLoading();
     this.changePhoto();
-    /* this.obtenerUbicacion(); */
-    this.geolocationM();
-    
   }
-  
-  async geolocationM(){
-    const princPosition = await this.geolocation.getCurrentPosition();
-    console.log("Current Position: ", princPosition)
-  }
-  
 
 
-
-/* async obtenerUbicacion(){
-  const location = await this.geolocation.getCurrentPosition();
-  console.log('location = ', location);
-
-  this.nativegeocoder.reverseGeocode(location.coords.latitude, location.coords.longitude, this.options).then((
-    result: NativeGeocoderResult[])=>{
-      console.log('result = ', result);
-      console.log('result = ', result[0]);
-    })
-}
- */
-
-   /* await this.geolocation.getCurrentPosition().then((resp) => {
-    var lat = resp.coords.latitude;
-    var long = resp.coords.longitude;
-    console.log(lat);
-    console.log(long);
-  }).catch((error) => {
-    console.log('Error getting location', error);
-  }); */
-
-
-/*   sendPost(){
-    this.geolocation.getCurrentPosition().then((resp) => {
-      var lat = resp.coords.latitude;
-      var long = resp.coords.longitude;
-      console.log(lat);
-      console.log(long);
-    }).catch((error) => {
-      console.log('Error getting location', error);
-    });
-  }
- */
   async changePhoto() {
     const image = await Camera.getPhoto({
       quality: 90,
@@ -146,24 +110,17 @@ export class RegisterPetPage implements OnInit {
 
    registrarPet(){
     const path = 'reportes';
-    const usuario = this.authService.test()
-    this.firestore.createDocument(this.data, path, usuario).then( (res) => {
-      console.log('SE REGISTRO UNA MASCOTA EXITOSAMENTE: ', res);
+    const randomid = this.firestore.createRandomID();
+    const usuario = this.authService.test() 
+    this.data.uid = usuario;
+    this.data.lat = this.lat;
+    this.data.lon = this.lon
+    this.firestore.createDocument(this.data, path, randomid).then( (res) => {
+      console.log('HOGAR-TEMPORAL: ID ASIGNADO A ESTE REPORTE: ', randomid);
+      console.log('HOGAR-TEMPORAL: SE REGISTRO UNA MASCOTA EXITOSAMENTE: ', res);
     });
   }
 
-  /* newReporte: reporte {
-    uid: '';
-    url: '';
-    tipo: '';
-    sexo: '';//Macho-Hembra
-    raza: '';
-    color: '';
-    temperamento: '';
-    tamano: '';
-  }; */
-
-
-
+  
 
 }

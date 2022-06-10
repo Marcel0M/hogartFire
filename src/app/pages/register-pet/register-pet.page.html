@@ -22,6 +22,13 @@
     </div>
   </ion-grid>
 
+ <!--  <ion-content padding>
+    <p>Latitud: {{lat}}</p>
+    <p>Longitud: {{lon}}</p>
+    <p>Altitud: {{alt}}</p>
+    <p>Presicion: {{accur}}</p>
+  </ion-content> -->
+
   <ion-item class="ion-padding tema">
     <ion-label class="letra-input" position="floating">Tipo De Animal</ion-label>
     <ion-input  [(ngModel)]="data.tipo" type="text"></ion-input>
@@ -45,6 +52,14 @@
   <ion-item class="ion-padding tema">
     <ion-label class="letra-input" position="floating">Tamaño</ion-label>
     <ion-input [(ngModel)]="data.tamano" type="text"></ion-input>
+  </ion-item>
+  <ion-item class="ion-padding tema">
+    <ion-label class="letra-input" position="floating">Latitud</ion-label>
+    <ion-input [(ngModel)]="data.lat" type="number" readonly>{{lat}}</ion-input>
+  </ion-item>
+  <ion-item class="ion-padding tema">
+    <ion-label class="letra-input" position="floating">Longitud</ion-label>
+    <ion-input [(ngModel)]="data.lon" type="number" readonly>{{lon}}</ion-input>
   </ion-item>
 
   <ion-button  (click)="registrarPet()" color="warning" class="ion-margin letra-boton" expand="block">Registrar Mascota</ion-button>

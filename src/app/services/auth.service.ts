@@ -13,7 +13,6 @@ export class AuthService {
   async register({ email, password }) {
     try {
       const user = await createUserWithEmailAndPassword(this.auth,email,password);
-      /* const createDoc = await this.fire.createDocument(email, 'users', '1') */
       return user;
     } catch (e) {
       return null;
@@ -37,11 +36,6 @@ test(){
 
   logout() {
     return signOut(this.auth);
-  }
-
-  createDoc(){
-    
-    
   }
 
 
