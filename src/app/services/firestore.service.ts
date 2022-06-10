@@ -25,6 +25,21 @@ readCollection(){
   });
 }
 
+updateDoc(data: any, path: string, id: string) {
+  const collection = this.firestore.collection(path);
+  return collection.doc(id).update(data);
+}
+
+getDoc<tipo>(path: string, id: string) {
+  const collection = this.firestore.collection<tipo>(path);
+  return collection.doc(id).valueChanges();
+}
+
+deleteDoc(path: string, id: string) {
+  const collection = this.firestore.collection(path);
+  return collection.doc(id).delete();
+}
+
 createRandomID(){
   return this.firestore.createId()
 }

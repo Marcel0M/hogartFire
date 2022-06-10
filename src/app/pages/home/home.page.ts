@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
-import { AlertController, LoadingController } from '@ionic/angular';
 import { users } from 'src/app/models/models';
 import { AuthService } from 'src/app/services/auth.service';
 import { AvatarService } from 'src/app/services/avatar.service';
@@ -16,12 +14,24 @@ import { InteractionService } from 'src/app/services/interaction.service';
 export class HomePage {
   profile = null;
 
+  perfil: users = {
+    uid: "",
+    correo: "",
+    nombre: "",
+    apellido: "",
+    direccion: "",
+    fecha_nacimiento: "",
+    sexo: "",
+    reportes: 0,
+    premios: 0,
+    ciudad: "",
+    region: ""
+  }
+
   constructor(
     private avatarService: AvatarService,
     private authService: AuthService,
     private router: Router,
-    private loadingController: LoadingController,
-    private alertController: AlertController,
     private firestore: FirestoreService,
     private interaction: InteractionService
   ) {
@@ -33,15 +43,10 @@ export class HomePage {
   ngOnInit(){
     this.getUsuarios();
     this.interaction.cargarLoading();
+    this.obtenerDatos()
   }
 
-  /* showLoading(){
-    this.interaction.showLoading();
-    setTimeout(_ => {
-      this.interaction.dismissLoading();
-    }, 3000);
-  }
- */
+ 
   getUsuarios(){
     this.firestore.readCollection()
   }
@@ -51,51 +56,25 @@ export class HomePage {
     this.router.navigateByUrl('login', { replaceUrl: true });
   }
 
-  async changeImage() {
-    const image = await Camera.getPhoto({
-      quality: 90,
-      allowEditing: false,
-      resultType: CameraResultType.Base64,
-      source: CameraSource.Camera, // Camera, Photos or Prompt!
-    });
-
-    if (image) {
-      const loading = await this.loadingController.create({
-          message: 'Cargando Imagen',
-          spinner: "bubbles"
-      });
-      await loading.present();
-
-      const result = await this.avatarService.uploadImage(image);
-      loading.dismiss();
-
-      if (!result) {
-        const alert = await this.alertController.create({
-          header: 'Subida fallida',
-          message: 'Hubo un problema al cargar tu foto',
-          buttons: ['OK'],
-        });
-        console.log("HOGAR-TEMPORAL: ERROR AL CARGAR IMAGEN");
-        await alert.present();
-      }
-      console.log("HOGAR-TEMPORAL: IMAGEN CARGADA CORRECTAMENTE");
-    }
+  editar() {
+    this.router.navigateByUrl('editar-home', { replaceUrl: true });
   }
 
-  modificarUsuario(){
-    const resultado: users = {
-    uid: '',
-    correo: "string",
-    nombre: "string",
-    apellido: "string",
-    direccion: "string",
-    fecha_nacimiento: "string",
-    sexo: "M"
-    }
-    const path = 'users';
-    this.firestore.createDocument(resultado, path, 'test').then( (res) => {
-      console.log('HOGAR-TEMPORAL: ', res);
-    });
+  obtenerDatos(){
+    const id = this.authService.test() 
+    this.firestore.getDoc<users>('users', id).subscribe( (res)=> {
+      console.log("LECTURA DATOS: ", res)
+       this.perfil.nombre = res.nombre;
+      this.perfil.correo = res.correo;
+      this.perfil.apellido = res.apellido;
+      this.perfil.sexo = res.sexo
+      this.perfil.fecha_nacimiento = res.fecha_nacimiento
+      this.perfil.direccion = res.direccion
+    })
   }
+
+
+
+
 
 }

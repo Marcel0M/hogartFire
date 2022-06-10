@@ -34,7 +34,7 @@
      <ion-back-button defaultHref="main-menu" color="light" text="Atras"></ion-back-button>
     </ion-buttons>
     <ion-buttons slot="end">
-      <ion-button color="light" fill="clear">EDITAR</ion-button>
+      <ion-button color="light" fill="clear" (click)="editar()">EDITAR</ion-button>
      </ion-buttons>
   </ion-toolbar>
 
@@ -44,7 +44,7 @@
 
   <ion-grid class="main-header">
     <div align="center">
-      <ion-avatar (click)="changeImage()">
+      <ion-avatar>
         <img *ngIf="profile?.imageUrl; else placeholder_avatar;" [src]="profile.imageUrl" />
         <ng-template #placeholder_avatar>
           <div class="fallback">
@@ -60,16 +60,16 @@
       <ion-item lines="none" class="ion-text-center">
         <ion-icon name="paw" color="danger"></ion-icon>
         <ion-label>
-          5
+          {{perfil.reportes}}
           <p>Reportes</p>
         </ion-label>
       </ion-item>
     </ion-col>
     <ion-col size="6">
       <ion-item lines="none" class="ion-text-center">
-        <ion-icon name="trophy" color="danger"></ion-icon> <!-- trophy -->
+        <ion-icon name="trophy" color="danger"></ion-icon> 
         <ion-label>
-          14
+          {{perfil.premios}}
           <p>Premios</p>
         </ion-label>
       </ion-item>
@@ -80,37 +80,46 @@
     <ion-item>
       <ion-label>
         <ion-text>Nombre</ion-text>
-        <p><ion-text color="dark">Obi Wan</ion-text></p>
+        <p><ion-text color="dark">{{perfil.nombre}} {{perfil.apellido}}</ion-text></p>
       </ion-label>
     </ion-item>
+
     <ion-item>
       <ion-label>
-        <ion-text>Telefono</ion-text>
-        <p><ion-text color="dark">+569 </ion-text></p>
+        <ion-text>Correo</ion-text>
+        <p><ion-text color="dark">{{perfil.correo}} </ion-text></p>
       </ion-label>
     </ion-item>
+
     <ion-item>
       <ion-label>
-        <ion-text>Email</ion-text>
-        <p><ion-text color="dark">kenobi2007@gmail.com</ion-text></p>
+        <ion-text>Fecha Nacimiento</ion-text>
+        <p><ion-text color="dark">{{perfil.fecha_nacimiento}}</ion-text></p>
       </ion-label>
     </ion-item>
+
     <ion-item>
       <ion-label>
-        <ion-text>Edad</ion-text>
-        <p><ion-text color="dark">49 Años</ion-text></p>
+        <ion-text>Sexo</ion-text>
+        <p><ion-text color="dark">{{perfil.sexo}}</ion-text></p>
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>
+        <ion-text>Region</ion-text>
+        <p><ion-text color="dark">{{perfil.region}}</ion-text></p>
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>
+        <ion-text>Ciudad</ion-text>
+        <p><ion-text color="dark">{{perfil.ciudad}}</ion-text></p>
       </ion-label>
     </ion-item>
     
-
-    <!-- <ion-item>
-      <ion-label>
-        <ion-text>Address</ion-text>
-        <p><ion-text color="dark">India</ion-text></p>
-      </ion-label>
-    </ion-item> -->
   </ion-list>
-
 </ion-content>
 
 <ion-footer class="ion-no-border">
@@ -120,7 +129,6 @@
     <ion-title></ion-title>
     <ion-button (click)="logout()" shape="round" expand="block" color="danger">
       <ion-icon slot="end" name="log-out"></ion-icon>
-    <!-- <ion-icon slot="icon-only" name="log-out"></ion-icon> -->
       CERRAR SESION
     </ion-button>
   </ion-toolbar>

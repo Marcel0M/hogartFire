@@ -7,7 +7,11 @@ export interface users{
     apellido: string;
     direccion: string;
     fecha_nacimiento: string;
-    sexo: 'M' | 'F';
+    sexo: string;
+    reportes: number;
+    premios: number;
+    ciudad: string;
+    region: string;
     /* imageUrl: Storage; */
 }
 
