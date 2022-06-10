@@ -11,8 +11,14 @@
 
   <ion-grid class="main-header">
     <div align="center">
+
+   <!--    <ion-item>
+        <img class="image"  [src]="data.url">
+      </ion-item> -->
+
       <ion-avatar (click)="changePhoto()">
-        <img *ngIf="pet?.photoUrl; else placeholder_avatar;" [src]="pet.photoUrl" />
+        <!-- <img *ngIf="pet?.photoUrl; else placeholder_avatar;" [src]="pet.photoUrl" />-->
+        <img *ngIf="getPetImage?.url; else placeholder_avatar;" [src]="getPetImage.url" /> 
         <ng-template #placeholder_avatar>
           <div class="fallback">
             <p>Selecciona Foto</p>
@@ -28,6 +34,13 @@
     <p>Altitud: {{alt}}</p>
     <p>Presicion: {{accur}}</p>
   </ion-content> -->
+
+  <ion-button>
+    <label for="file-upload">
+      <ion-icon slot="icon-only" name="images"></ion-icon>
+    </label>
+     <input  (change)="newImageUpload($event)" id="file-upload" style="display: none" type="file"  accept="image/*">
+ </ion-button>
 
   <ion-item class="ion-padding tema">
     <ion-label class="letra-input" position="floating">Tipo De Animal</ion-label>
