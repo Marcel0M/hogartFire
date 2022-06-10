@@ -24,29 +24,29 @@
 
   <ion-item class="ion-padding tema">
     <ion-label class="letra-input" position="floating">Tipo De Animal</ion-label>
-    <ion-input  type="text"></ion-input>
+    <ion-input  [(ngModel)]="data.tipo" type="text"></ion-input>
   </ion-item>
   <ion-item class="ion-padding tema">
     <ion-label class="letra-input" position="floating">Sexo</ion-label>
-    <ion-input  type="text"></ion-input>
+    <ion-input [(ngModel)]="data.sexo" type="text"></ion-input>
   </ion-item>
   <ion-item class="ion-padding tema">
     <ion-label class="letra-input" position="floating">Raza</ion-label>
-    <ion-input  type="text"></ion-input>
+    <ion-input [(ngModel)]="data.raza" type="text"></ion-input>
   </ion-item>
   <ion-item class="ion-padding tema">
     <ion-label class="letra-input" position="floating">Color</ion-label>
-    <ion-input  type="text"></ion-input>
+    <ion-input [(ngModel)]="data.color" type="text"></ion-input>
   </ion-item>
   <ion-item class="ion-padding tema">
     <ion-label class="letra-input" position="floating">Temperamento</ion-label>
-    <ion-input  type="text"></ion-input>
+    <ion-input [(ngModel)]="data.temperamento" type="text"></ion-input>
   </ion-item>
   <ion-item class="ion-padding tema">
     <ion-label class="letra-input" position="floating">Tamaño</ion-label>
-    <ion-input  type="text"></ion-input>
+    <ion-input [(ngModel)]="data.tamano" type="text"></ion-input>
   </ion-item>
 
-  <ion-button  color="warning" class="ion-margin letra-boton" expand="block">Registrar Mascota</ion-button>
+  <ion-button  (click)="registrarPet()" color="warning" class="ion-margin letra-boton" expand="block">Registrar Mascota</ion-button>
 
 </ion-content>

@@ -15,7 +15,24 @@ import { reporte } from 'src/app/models/models';
   styleUrls: ['./register-pet.page.scss'],
 })
 export class RegisterPetPage implements OnInit {
+
+  data: reporte = {
+    uid: '',
+    url: "",
+    tipo:'',
+    sexo: '',
+    raza: "",
+    color: "",
+    temperamento: "",
+    tamano: ''
+
+  }
+
+
   pet = null;
+
+   
+
 
   constructor(
     private avatarService: AvatarService,
@@ -35,6 +52,7 @@ export class RegisterPetPage implements OnInit {
   ngOnInit() {
     this.interaction.cargarLoading();
     this.changePhoto();
+    
   }
 
 
@@ -70,21 +88,26 @@ export class RegisterPetPage implements OnInit {
   }
 
 
-  registrarPet(){
-    const resultado: reporte = {
-    uid: '',
-    url: "",
-    raza: "string",
-    color: "string",
-    temperamento: "string",
-    sexo: "M"
-    }
-    const path = 'users';
+   registrarPet(){
+    const path = 'reportes';
     const usuario = this.authService.test()
-    this.firestore.createDocument(resultado, path, usuario).then( (res) => {
-      console.log('HOGAR-TEMPORAL: ', res);
+    this.firestore.createDocument(this.data, path, usuario).then( (res) => {
+      console.log('SE REGISTRO UNA MASCOTA EXITOSAMENTE: ', res);
     });
   }
+
+  /* newReporte: reporte {
+    uid: '';
+    url: '';
+    tipo: '';
+    sexo: '';//Macho-Hembra
+    raza: '';
+    color: '';
+    temperamento: '';
+    tamano: '';
+  }; */
+
+
 
 
 }

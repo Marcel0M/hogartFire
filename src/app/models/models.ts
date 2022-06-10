@@ -16,9 +16,11 @@ export interface users{
 export interface reporte{
     uid: string;
     url: string;
+    tipo: string;
+    sexo: string;//Macho-Hembra
     raza: string;
     color: string;
     temperamento: string;
-    sexo: 'M' | 'F';
+    tamano: string; 
     /* imageUrl: Storage; */
 }

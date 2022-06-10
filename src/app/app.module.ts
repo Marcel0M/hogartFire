@@ -20,6 +20,7 @@ import { FirestoreService } from './services/firestore.service';
 import { InteractionService } from './services/interaction.service';
 import { AvatarService } from './services/avatar.service';
 import { AuthService } from './services/auth.service';
+import { RegisterPetPage } from './pages/register-pet/register-pet.page'; //DECLARAR PARA EL CREATE Y PASAR ONINIT
 
 @NgModule({
   declarations: [AppComponent],
