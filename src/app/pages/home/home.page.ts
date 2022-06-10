@@ -67,9 +67,11 @@ export class HomePage {
        this.perfil.nombre = res.nombre;
       this.perfil.correo = res.correo;
       this.perfil.apellido = res.apellido;
-      this.perfil.sexo = res.sexo
-      this.perfil.fecha_nacimiento = res.fecha_nacimiento
-      this.perfil.direccion = res.direccion
+      this.perfil.sexo = res.sexo;
+      this.perfil.fecha_nacimiento = res.fecha_nacimiento;
+      this.perfil.direccion = res.direccion;
+      this.perfil.ciudad = res.ciudad;
+      this.perfil.region = res.region;
     })
   }
 
