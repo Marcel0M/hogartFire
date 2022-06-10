@@ -31,7 +31,6 @@ export class AvatarService {
   }
 
  
-
   async uploadImage(cameraFile: Photo) {
     const user = this.auth.currentUser;
     const path = `uploads/${user.uid}/profile.png`;
@@ -52,24 +51,6 @@ export class AvatarService {
     }
   }
 
-/* 
-  uploadImageReporte(file: any, path: string, nombre: string): Promise<string> {
-    return new Promise(  resolve => {
-        const filePath = path + '/' + nombre + '.png';
-        const ref = this.storage2.ref(filePath);
-        const task = ref.put(file);
-        task.snapshotChanges().pipe(
-          finalize(  () => {
-                ref.getDownloadURL().subscribe( res => {
-                  const downloadURL = res;
-                  resolve(downloadURL);
-                  return;
-                });
-          })
-       )
-      .subscribe();
-    });
-} */
 
       
 //FUNCION QUE SUBE FOTO DE MASCOTA
@@ -104,6 +85,14 @@ getPet() {
 }
 
 
+
+}
+
+
+/* -----------------------------------------------------------
+                RESPALDO DE CODIGO BASURA 
+----------------------------------------------------------- */
+
 //FUNCION QUE SUBE FOTO DE MASCOTA
   /* async uploadPhoto(cameraFile: Photo) {
     const user = this.auth.currentUser;
@@ -125,4 +114,22 @@ getPet() {
       return null;
     }
   } */
-}
+
+/* 
+  uploadImageReporte(file: any, path: string, nombre: string): Promise<string> {
+    return new Promise(  resolve => {
+        const filePath = path + '/' + nombre + '.png';
+        const ref = this.storage2.ref(filePath);
+        const task = ref.put(file);
+        task.snapshotChanges().pipe(
+          finalize(  () => {
+                ref.getDownloadURL().subscribe( res => {
+                  const downloadURL = res;
+                  resolve(downloadURL);
+                  return;
+                });
+          })
+       )
+      .subscribe();
+    });
+} */

@@ -79,7 +79,70 @@ export class RegisterPetPage implements OnInit {
   }
 
 
-  /* async changePhoto() {
+  async changePhoto() {
+    const image = await Camera.getPhoto({
+      quality: 90,
+      allowEditing: false,
+      resultType: CameraResultType.Base64,
+      source: CameraSource.Camera, 
+    });
+
+    if (image) {
+      const loading = await this.loadingController.create({
+          message: 'Cargando Imagen',
+          spinner: "bubbles"
+      });
+      await loading.present();
+      const path = 'reportes';
+      const generarToken = this.firestore.createRandomID();
+      this.randomId = generarToken
+      const result = await this.avatarService.uploadPhoto(image, path, this.randomId); 
+      loading.dismiss();
+      this.data.url = result;
+
+      if (!result) {
+        const alert = await this.alertController.create({
+          header: 'Subida fallida',
+          message: 'Hubo un problema al cargar tu foto',
+          buttons: ['OK'],
+        });
+        console.log("HOGAR-TEMPORAL: ERROR AL CARGAR IMAGEN");
+        await alert.present();
+      }
+      console.log("HOGAR-TEMPORAL: IMAGEN CARGADA CORRECTAMENTE");
+
+      this.avatarService.getPetImage(this.randomId).subscribe((data) => {
+        this.getPetImage = data;
+      });
+    }
+  }
+
+
+
+   registrarPet(){
+    const path = 'reportes';
+    const token = this.randomId
+    const usuario = this.authService.test() 
+    this.data.uid = usuario;
+    this.data.lat = this.lat;
+    this.data.lon = this.lon
+    this.firestore.createDocument(this.data, path, token).then( (res) => {
+      console.log('HOGAR-TEMPORAL: ID ASIGNADO A ESTE REPORTE: ', token);
+      console.log('HOGAR-TEMPORAL: SE REGISTRO UNA MASCOTA EXITOSAMENTE: ', res);
+    });
+    this.router.navigateByUrl('home', { replaceUrl: true });
+  }
+
+}
+
+
+
+/* -----------------------------------------------------------
+                RESPALDO DE CODIGO BASURA 
+----------------------------------------------------------- */
+
+
+ /* async changePhoto() {
     const image = await Camera.getPhoto({
       quality: 90,
       allowEditing: false,
@@ -110,48 +173,8 @@ export class RegisterPetPage implements OnInit {
     }
   } */
 
-  async changePhoto() {
-    const image = await Camera.getPhoto({
-      quality: 90,
-      allowEditing: false,
-      resultType: CameraResultType.Base64,
-      source: CameraSource.Camera, // Camera, Photos or Prompt!
-    });
 
-    if (image) {
-      const loading = await this.loadingController.create({
-          message: 'Cargando Imagen',
-          spinner: "bubbles"
-      });
-      await loading.present();
-      const path = 'reportes';
-      const generarToken = this.firestore.createRandomID();
-      this.randomId = generarToken
-      /* const result = await this.avatarService.uploadImageReporte(image, path, name); */
-      const result = await this.avatarService.uploadPhoto(image, path, this.randomId); 
-      loading.dismiss();
-      this.data.url = result;
-
-      if (!result) {
-        const alert = await this.alertController.create({
-          header: 'Subida fallida',
-          message: 'Hubo un problema al cargar tu foto',
-          buttons: ['OK'],
-        });
-        console.log("HOGAR-TEMPORAL: ERROR AL CARGAR IMAGEN");
-        await alert.present();
-      }
-      console.log("HOGAR-TEMPORAL: IMAGEN CARGADA CORRECTAMENTE");
-
-      this.avatarService.getPetImage(this.randomId).subscribe((data) => {
-        this.getPetImage = data;
-      });
-     /*  this.avatarService.getPetImage(this.randomId); */
-    }
-  }
-
-
-/*   async newImageUpload(event: any) {
+  /*   async newImageUpload(event: any) {
     if (event.target.files && event.target.files[0]) {
         this.newFile = event.target.files[0];
         const reader = new FileReader();
@@ -167,24 +190,3 @@ export class RegisterPetPage implements OnInit {
         this.data.url = res;
       }
    } */
-
-
-
-   registrarPet(){
-    const path = 'reportes';
-    const token = this.randomId
-    /* const randomid = this.firestore.createRandomID(); */
-    const usuario = this.authService.test() 
-    this.data.uid = usuario;
-    this.data.lat = this.lat;
-    this.data.lon = this.lon
-    this.firestore.createDocument(this.data, path, token).then( (res) => {
-      console.log('HOGAR-TEMPORAL: ID ASIGNADO A ESTE REPORTE: ', token);
-      console.log('HOGAR-TEMPORAL: SE REGISTRO UNA MASCOTA EXITOSAMENTE: ', res);
-    });
-    this.router.navigateByUrl('home', { replaceUrl: true });
-  }
-
-  
-
-}
