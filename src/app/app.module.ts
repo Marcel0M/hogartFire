@@ -21,6 +21,8 @@ import { InteractionService } from './services/interaction.service';
 import { AvatarService } from './services/avatar.service';
 import { AuthService } from './services/auth.service';
 import { RegisterPetPage } from './pages/register-pet/register-pet.page'; //DECLARAR PARA EL CREATE Y PASAR ONINIT
+import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@awesome-cordova-plugins/native-geocoder/ngx';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -49,7 +51,8 @@ import { RegisterPetPage } from './pages/register-pet/register-pet.page'; //DECL
   FirestoreService,
   InteractionService,
   AvatarService,
-  AuthService
+  AuthService,
+  NativeGeocoder
   ],
   bootstrap: [AppComponent],
 })

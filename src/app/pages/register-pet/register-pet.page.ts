@@ -8,6 +8,9 @@ import { AvatarService } from 'src/app/services/avatar.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { InteractionService } from 'src/app/services/interaction.service';
 import { reporte } from 'src/app/models/models';
+import { GeolocationPlugin } from '@capacitor/geolocation';
+import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@awesome-cordova-plugins/native-geocoder/ngx';
+
 
 @Component({
   selector: 'app-register-pet',
@@ -15,6 +18,12 @@ import { reporte } from 'src/app/models/models';
   styleUrls: ['./register-pet.page.scss'],
 })
 export class RegisterPetPage implements OnInit {
+
+  options: NativeGeocoderOptions = {
+    useLocale: true, 
+    maxResults: 5
+  }
+
 
   data: reporte = {
     uid: '',
@@ -41,21 +50,68 @@ export class RegisterPetPage implements OnInit {
     private loadingController: LoadingController,
     private alertController: AlertController,
     private firestore: FirestoreService,
-    private interaction: InteractionService 
+    private interaction: InteractionService,
+    private geolocation: GeolocationPlugin,
+    private nativegeocoder: NativeGeocoder
     
-  ) {
+  ) 
+  {
     this.avatarService.getPet().subscribe((data) => {
       this.pet = data;
     });
    }
 
+   
+
   ngOnInit() {
     this.interaction.cargarLoading();
     this.changePhoto();
+    /* this.obtenerUbicacion(); */
+    this.geolocationM();
     
   }
+  
+  async geolocationM(){
+    const princPosition = await this.geolocation.getCurrentPosition();
+    console.log("Current Position: ", princPosition)
+  }
+  
 
 
+
+/* async obtenerUbicacion(){
+  const location = await this.geolocation.getCurrentPosition();
+  console.log('location = ', location);
+
+  this.nativegeocoder.reverseGeocode(location.coords.latitude, location.coords.longitude, this.options).then((
+    result: NativeGeocoderResult[])=>{
+      console.log('result = ', result);
+      console.log('result = ', result[0]);
+    })
+}
+ */
+
+   /* await this.geolocation.getCurrentPosition().then((resp) => {
+    var lat = resp.coords.latitude;
+    var long = resp.coords.longitude;
+    console.log(lat);
+    console.log(long);
+  }).catch((error) => {
+    console.log('Error getting location', error);
+  }); */
+
+
+/*   sendPost(){
+    this.geolocation.getCurrentPosition().then((resp) => {
+      var lat = resp.coords.latitude;
+      var long = resp.coords.longitude;
+      console.log(lat);
+      console.log(long);
+    }).catch((error) => {
+      console.log('Error getting location', error);
+    });
+  }
+ */
   async changePhoto() {
     const image = await Camera.getPhoto({
       quality: 90,

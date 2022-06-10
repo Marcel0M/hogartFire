@@ -130,46 +130,22 @@
 <ion-footer>
   <ion-tabs #tabs>
   <ion-fab vertical="bottom" horizontal="center" translucent="true">
-    <ion-fab-button>
+    <ion-fab-button (click)="toRegisterPet()">
       <ion-icon name="add-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 
   <ion-tab-bar slot="bottom">
-
-    
-    <ion-tab-button (click)="toHomePet()"> <!-- tab="home" -->
-                                              <!-- selectTab ==  -->
+    <ion-tab-button (click)="toHomePet()"> 
       <ion-icon (click)="toHomePet()" [name]=" 'home' ? 'home' : 'home-outline'"></ion-icon>
     </ion-tab-button>
-
-   <!--  <ion-tab-button tab="search" class="search">
-      <ion-icon [name]="selectTab == 'search' ? 'search' : 'search-outline'"></ion-icon>
-    </ion-tab-button> -->
-
-
     <svg (click)="toRegisterPet()" height="50" viewBox="0 0 100 50" width="100" xmlns="http://www.w3.org/2000/svg"> 
-      <path d="M100 0v50H0V0c.543 27.153 22.72 49 50 49S99.457 27.153 99.99 0h.01z" 
-        fill="red" fill-rule="evenodd" >
-      </path>
+      <path d="M100 0v50H0V0c.543 27.153 22.72 49 50 49S99.457 27.153 99.99 0h.01z" fill="red" fill-rule="evenodd" ></path>
     </svg>
-
-   <!--  <ion-tab-button tab="wishlist" class="wishlist">
-      <ion-icon [name]="selectTab == 'wishlist' ? 'heart' : 'heart-outline'"></ion-icon>
-    </ion-tab-button> -->
- 
-    <ion-tab-button (click)="toHome()"> <!-- tab="profile"  -->
-                                      <!-- selectTab ==  -->
+    <ion-tab-button (click)="toHome()">
       <ion-icon (click)="toHome()" [name]="'profile' ? 'person' : 'person-outline'"></ion-icon>
-   <!--    <ion-avatar (click)="home()">
-        <img *ngIf="profile?.imageUrl; else placeholder_avatar;" [src]="profile.imageUrl" class="avatar"/>
-      </ion-avatar>
-      <ng-template #placeholder_avatar></ng-template> -->
     </ion-tab-button>
-
   </ion-tab-bar>
-
 </ion-tabs>
-
 </ion-footer>
 
