@@ -130,7 +130,7 @@ export class RegisterPetPage implements OnInit {
       console.log('HOGAR-TEMPORAL: ID ASIGNADO A ESTE REPORTE: ', token);
       console.log('HOGAR-TEMPORAL: SE REGISTRO UNA MASCOTA EXITOSAMENTE: ', res);
     });
-    this.router.navigateByUrl('home', { replaceUrl: true });
+    this.router.navigateByUrl('main-menu', { replaceUrl: true });
   }
 
 }
