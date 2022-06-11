@@ -92,8 +92,8 @@ export class EditarHomePage implements OnInit {
     this.router.navigateByUrl('home', { replaceUrl: true });
   }
 
-  atras(){
+  /* atras(){
     this.router.navigateByUrl('home', { replaceUrl: true });
-  }
+  } */
 
 }
