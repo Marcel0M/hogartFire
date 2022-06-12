@@ -8,6 +8,9 @@ import { AvatarService } from 'src/app/services/avatar.service';
 //import { GoogleMap } from '@capacitor/google-maps';
 import { environment } from 'src/environments/environment';
 import { InteractionService } from 'src/app/services/interaction.service';
+import { reporte } from 'src/app/models/models';
+import { FirestoreService } from 'src/app/services/firestore.service';
+import { Console } from 'console';
 
 @Component({
   selector: 'app-main-menu',
@@ -27,13 +30,16 @@ export class MainMenuPage implements OnInit {
 
   ruta: string = '';
   profile = null;
+  Reportes : reporte[] = [];
+  test = null;
 
   constructor(private router: Router,
     private avatarService: AvatarService,
     public navController: NavController,
     public loadingController: LoadingController,
     private authService: AuthService,
-    private interaction: InteractionService
+    private interaction: InteractionService,
+    private firestore: FirestoreService
     ) { 
       this.avatarService.getUserProfile().subscribe((data) => {
         this.profile = data;
@@ -43,6 +49,7 @@ export class MainMenuPage implements OnInit {
 
   ngOnInit() {
     this.interaction.cargarLoading();
+    this.cargarReportes();
   }
 
   /* ngAfterViewInit() {
@@ -102,6 +109,16 @@ export class MainMenuPage implements OnInit {
     console.log('HOGAR-TEMPORAL: CARGA FINALIZADA');
   }
 
+
+cargarReportes(){
+  this.firestore.getCollection<reporte>('reportes').subscribe( res => {
+    console.log('HOGAR-TEMPORAL: Esta es la coleccion: ', res);
+    this.Reportes = res;
+  })
+}
+
+
+
 //FUNCIONES NAVEGACION
   toHome() {
     this.router.navigate(['/home']);
@@ -118,7 +135,7 @@ export class MainMenuPage implements OnInit {
     this.navController.navigateRoot('home-pet')
   }
 
-  toProfilePet() {
+  toProfilePet(id) {
     this.router.navigate(['/profile-pet']);
     this.navController.navigateRoot('profile-pet')
   }

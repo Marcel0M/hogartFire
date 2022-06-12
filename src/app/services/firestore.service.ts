@@ -7,6 +7,7 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat
 })
 export class FirestoreService {
   usuario: AngularFirestoreDocument;
+  
 
   constructor(private firestore: AngularFirestore) {
    }
@@ -23,6 +24,13 @@ readCollection(){
   this.firestore.collection('users').valueChanges().subscribe( (res) => {
     console.log("HOGAR-TEMPORAL: ", res);
   });
+}
+
+getCollection<tipo>(path: string) {
+  console.log("HOGAR-TEMPORAL: Reading collection.")
+  const collection = this.firestore.collection<tipo>(path);
+  console.log("HOGAR-TEMPORAL: ", collection);
+  return collection.valueChanges();
 }
 
 updateDoc(data: any, path: string, id: string) {

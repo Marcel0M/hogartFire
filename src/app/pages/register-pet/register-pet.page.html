@@ -22,23 +22,13 @@
     </div>
   </ion-grid>
 
- <!--  <ion-content padding>
-    <p>Latitud: {{lat}}</p>
-    <p>Longitud: {{lon}}</p>
-    <p>Altitud: {{alt}}</p>
-    <p>Presicion: {{accur}}</p>
-  </ion-content> -->
-
-<!--   <ion-button>
-    <label for="file-upload">
-      <ion-icon slot="icon-only" name="images"></ion-icon>
-    </label>
-     <input  (change)="newImageUpload($event)" id="file-upload" style="display: none" type="file"  accept="image/*">
- </ion-button> -->
-
   <ion-item class="ion-padding tema">
     <ion-label class="letra-input" position="floating">Tipo De Animal</ion-label>
     <ion-input  [(ngModel)]="data.tipo" type="text"></ion-input>
+  </ion-item>
+  <ion-item class="ion-padding tema">
+    <ion-label class="letra-input" position="floating">Situacion (Perdido/Abandonado)</ion-label>
+    <ion-input [(ngModel)]="data.situacion" type="text"></ion-input>
   </ion-item>
   <ion-item class="ion-padding tema">
     <ion-label class="letra-input" position="floating">Sexo</ion-label>

@@ -18,6 +18,7 @@ export interface users{
 
 
 export interface reporte{
+    id: string;
     uid: string;
     url: string;
     tipo: string;
@@ -28,5 +29,6 @@ export interface reporte{
     tamano: string; 
     lat: number;
     lon: number;
+    situacion: string;
     /* imageUrl: Storage; */
 }

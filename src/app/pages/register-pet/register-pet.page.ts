@@ -19,6 +19,7 @@ import { Geolocation, GeolocationOptions } from '@awesome-cordova-plugins/geoloc
 export class RegisterPetPage implements OnInit {
 
   data: reporte = {
+    id: "",
     uid: "",
     url: "",
     tipo: "",
@@ -27,6 +28,7 @@ export class RegisterPetPage implements OnInit {
     color: "",
     temperamento: "",
     tamano: "",
+    situacion: "",
     lat: 0,
     lon: 0,
   }
@@ -125,7 +127,8 @@ export class RegisterPetPage implements OnInit {
     const usuario = this.authService.test() 
     this.data.uid = usuario;
     this.data.lat = this.lat;
-    this.data.lon = this.lon
+    this.data.lon = this.lon;
+    this.data.id = token;
     this.firestore.createDocument(this.data, path, token).then( (res) => {
       console.log('HOGAR-TEMPORAL: ID ASIGNADO A ESTE REPORTE: ', token);
       console.log('HOGAR-TEMPORAL: SE REGISTRO UNA MASCOTA EXITOSAMENTE: ', res);
