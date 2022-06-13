@@ -68,9 +68,6 @@ export class RegisterPetPage implements OnInit {
       }).catch((error) => {
         console.log('HOGAR-TEMPORAL: Error al obtener tu ubicacion', error);
       });
-    /* this.avatarService.getPet().subscribe((data) => {
-      this.pet = data;
-    }); */
    }
 
 
@@ -119,8 +116,6 @@ export class RegisterPetPage implements OnInit {
     }
   }
 
-
-
    registrarPet(){
     const path = 'reportes';
     const token = this.randomId
@@ -135,61 +130,4 @@ export class RegisterPetPage implements OnInit {
     });
     this.router.navigateByUrl('main-menu', { replaceUrl: true });
   }
-
 }
-
-
-
-/* -----------------------------------------------------------
-                RESPALDO DE CODIGO BASURA 
------------------------------------------------------------ */
-
-
- /* async changePhoto() {
-    const image = await Camera.getPhoto({
-      quality: 90,
-      allowEditing: false,
-      resultType: CameraResultType.Base64,
-      source: CameraSource.Camera, // Camera, Photos or Prompt!
-    });
-
-    if (image) {
-      const loading = await this.loadingController.create({
-          message: 'Cargando Imagen',
-          spinner: "bubbles"
-      });
-      await loading.present();
-
-      const result = await this.avatarService.uploadPhoto(image);
-      loading.dismiss();
-
-      if (!result) {
-        const alert = await this.alertController.create({
-          header: 'Subida fallida',
-          message: 'Hubo un problema al cargar tu foto',
-          buttons: ['OK'],
-        });
-        console.log("HOGAR-TEMPORAL: ERROR AL CARGAR IMAGEN");
-        await alert.present();
-      }
-      console.log("HOGAR-TEMPORAL: IMAGEN CARGADA CORRECTAMENTE");
-    }
-  } */
-
-
-  /*   async newImageUpload(event: any) {
-    if (event.target.files && event.target.files[0]) {
-        this.newFile = event.target.files[0];
-        const reader = new FileReader();
-        reader.onload = ((image) => {
-          
-        });
-        reader.readAsDataURL(event.target.files[0]);
-      }
-      const path = 'reportes';
-      const name = this.firestore.createRandomID();
-      if (this.newFile !== undefined) {
-        const res = await this.avatarService.uploadImageReporte(this.newFile, path, name);
-        this.data.url = res;
-      }
-   } */

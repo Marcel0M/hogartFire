@@ -64,7 +64,7 @@ export class HomePage {
     const id = this.authService.test() 
     this.firestore.getDoc<users>('users', id).subscribe( (res)=> {
       console.log("LECTURA DATOS: ", res)
-       this.perfil.nombre = res.nombre;
+      this.perfil.nombre = res.nombre;
       this.perfil.correo = res.correo;
       this.perfil.apellido = res.apellido;
       this.perfil.sexo = res.sexo;
@@ -74,9 +74,4 @@ export class HomePage {
       this.perfil.region = res.region;
     })
   }
-
-
-
-
-
 }

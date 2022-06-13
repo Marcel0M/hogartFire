@@ -55,7 +55,7 @@ export class EditarHomePage implements OnInit {
       quality: 90,
       allowEditing: false,
       resultType: CameraResultType.Base64,
-      source: CameraSource.Camera, // Camera, Photos or Prompt!
+      source: CameraSource.Camera, 
     });
 
     if (image) {
@@ -81,7 +81,6 @@ export class EditarHomePage implements OnInit {
     }
   }
 
-
   editarUsuario(){
     const path = 'users';
     const usuario = this.authService.test() 
@@ -91,9 +90,4 @@ export class EditarHomePage implements OnInit {
     });
     this.router.navigateByUrl('home', { replaceUrl: true });
   }
-
-  /* atras(){
-    this.router.navigateByUrl('home', { replaceUrl: true });
-  } */
-
 }
