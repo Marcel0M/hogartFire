@@ -22,16 +22,18 @@
           </div>
         </ng-template>
       </ion-avatar>
+      <ion-text>Cambiar foto del perfil</ion-text>
     </div>
   </ion-grid>
 
 
   <ion-list lines="full">
     <ion-item>
-      <ion-label>
-        <ion-text>Sexo</ion-text>
-        <ion-input color="dark" type="text" [(ngModel)]="data.sexo"></ion-input>
-      </ion-label>
+      <ion-label>Sexo</ion-label>
+      <ion-select [(ngModel)]="data.sexo">
+        <ion-select-option value="Hombre">Hombre</ion-select-option>
+        <ion-select-option value="Mujer">Mujer</ion-select-option>
+      </ion-select>
     </ion-item>
     
     <ion-item>

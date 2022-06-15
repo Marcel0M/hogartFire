@@ -22,17 +22,41 @@
     </div>
   </ion-grid>
 
-  <ion-item class="ion-padding tema">
+ <!--  <ion-item class="ion-padding tema">
     <ion-label class="letra-input" position="floating">Tipo De Animal</ion-label>
     <ion-input  [(ngModel)]="data.tipo" type="text"></ion-input>
-  </ion-item>
+  </ion-item> -->
+
   <ion-item class="ion-padding tema">
+    <ion-label>Tipo De Animal</ion-label>
+    <ion-select [(ngModel)]="data.tipo">
+      <ion-select-option value="Gato">Gato</ion-select-option>
+      <ion-select-option value="Perro">Perro</ion-select-option>
+    </ion-select>
+  </ion-item>
+  
+ <!--  <ion-item class="ion-padding tema">
     <ion-label class="letra-input" position="floating">Situacion (Perdido/Abandonado)</ion-label>
     <ion-input [(ngModel)]="data.situacion" type="text"></ion-input>
-  </ion-item>
+  </ion-item> -->
+
   <ion-item class="ion-padding tema">
+    <ion-label>Situacion</ion-label>
+    <ion-select [(ngModel)]="data.situacion">
+      <ion-select-option value="Perdido">Perdido</ion-select-option>
+      <ion-select-option value="Abandonado">Abandonado</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <!-- <ion-item class="ion-padding tema">
     <ion-label class="letra-input" position="floating">Sexo</ion-label>
     <ion-input [(ngModel)]="data.sexo" type="text"></ion-input>
+  </ion-item> -->
+  <ion-item class="ion-padding tema">
+    <ion-label>Sexo</ion-label>
+    <ion-select [(ngModel)]="data.sexo">
+      <ion-select-option value="Hembra">Hembra</ion-select-option>
+      <ion-select-option value="Macho">Macho</ion-select-option>
+    </ion-select>
   </ion-item>
   <ion-item class="ion-padding tema">
     <ion-label class="letra-input" position="floating">Raza</ion-label>

@@ -11,16 +11,17 @@
 
 <ion-content class="ion-padding inihf">
   <ion-list class="ion-padding inihf">
-    <ion-list-header> Mascotas En Adopcion </ion-list-header>
+    <ion-list-header class="inihf"> Mascotas En Adopcion </ion-list-header>
     <ion-item *ngFor="let reporte of Reportes" (click)="toProfilePet(reporte.id)">
-      <ion-avatar slot="start">
-        <img class="image"  [src]="reporte.url">
+      <ion-avatar slot="start" class="avatar1">
+        <img class="image" [src]="reporte.url">
       </ion-avatar>
-      <ion-label>
-        <h2>{{reporte.situacion}}: {{reporte.tipo}} {{reporte.raza}} </h2>
-        <h2>{{reporte.color}}</h2>
-        <h3>{{reporte.sexo}}</h3>
-        <p>{{reporte.raza}}</p>
+      <ion-label class="inihf">
+        <h3>Situacion: {{reporte.situacion}}<br>
+            Tipo: {{reporte.tipo}}<br>
+            Raza: {{reporte.raza}}<br>
+            Color: {{reporte.color}}<br>
+            Sexo: {{reporte.sexo}}</h3>
       </ion-label>
     </ion-item>
   </ion-list>
