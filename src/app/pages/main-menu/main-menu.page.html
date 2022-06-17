@@ -12,7 +12,7 @@
 <ion-content class="ion-padding inihf">
   <ion-list class="ion-padding inihf">
     <ion-list-header class="inihf"> Mascotas En Adopcion </ion-list-header>
-    <ion-item *ngFor="let reporte of Reportes" (click)="toProfilePet(reporte.id)">
+    <ion-item *ngFor="let reporte of Reportes" [routerLink]="['/profile-pet']" (click)="editPet(reporte)">
       <ion-avatar slot="start" class="avatar1">
         <img class="image" [src]="reporte.url">
       </ion-avatar>

@@ -8,6 +8,8 @@ import { AvatarService } from 'src/app/services/avatar.service';
 
 import { environment } from 'src/environments/environment';
 import { InteractionService } from 'src/app/services/interaction.service';
+import { FirestoreService } from 'src/app/services/firestore.service';
+import { reporte } from 'src/app/models/models';
 
 
 @Component({
@@ -17,8 +19,25 @@ import { InteractionService } from 'src/app/services/interaction.service';
 })
 export class ProfilePetPage implements OnInit {
 
+  petPerfil : reporte = {
+    id: "",
+    uid: "",
+    url: "",
+    tipo: "",
+    sexo: "",//Macho-Hembra
+    raza: "",
+    color: "",
+    temperamento: "",
+    tamano: "",
+    lat: 0,
+    lon: 0,
+    situacion: ""
+  }
   ruta: string = '';
   profile = null;
+  Reportes : reporte[] = [];
+
+  
 
   constructor(
     private router: Router,
@@ -26,7 +45,8 @@ export class ProfilePetPage implements OnInit {
     public navController: NavController,
     public loadingController: LoadingController,
     private authService: AuthService,
-    private interaction: InteractionService
+    private interaction: InteractionService,
+    private firestore: FirestoreService
   ) {
     this.avatarService.getUserProfile().subscribe((data) => {
       this.profile = data;
@@ -35,7 +55,11 @@ export class ProfilePetPage implements OnInit {
    }
 
   ngOnInit() {
+
+    
     this.interaction.cargarLoading();
+    const pet = this.firestore.getPet();
+    console.log('VAMOS A MOSTRAR ESTE ->', pet);
   }
 
    //FUNCION QUE CARGA PAGINA
@@ -58,5 +82,32 @@ export class ProfilePetPage implements OnInit {
     this.router.navigate(['/home']);
     this.navController.navigateRoot('home')
   }
+
+
+  cargarReportes(){
+    this.firestore.getCollection<reporte>('reportes').subscribe( res => {
+      console.log('HOGAR-TEMPORAL: Esta es la coleccion: ', res);
+      this.Reportes = res;
+    })
+  }
+
+  /* editPet() {
+    this.firestore.readPet
+  } */
+
+  /* obtenerPet() {
+    this.firestore.getPet().( (res)=> {
+      console.log("LECTURA DATOS: ", res)
+      this.petPerfil.tipo = res.tipo;
+      this.petPerfil.sexo = res.sexo;
+      this.petPerfil.raza = res.raza;
+      this.petPerfil.color = res.color;
+      this.petPerfil.temperamento = res.temperamento;
+      this.petPerfil.tamano = res.tamano;
+      this.petPerfil.lat = res.lat;
+      this.petPerfil.lon = res.lon;
+      this.petPerfil.situacion = res.situacion;
+    })
+  } */
 
 }

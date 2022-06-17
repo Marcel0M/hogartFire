@@ -117,6 +117,11 @@ cargarReportes(){
   })
 }
 
+editPet(pet: reporte) {
+  console.log('click en mascota ->', pet);
+  this.firestore.readPet(pet);
+}
+
 
 
 //FUNCIONES NAVEGACION
@@ -136,6 +141,7 @@ cargarReportes(){
   }
 
   toProfilePet(id) {
+    console.log('click en la mascota ->', id)
     this.router.navigate(['/profile-pet']);
     this.navController.navigateRoot('profile-pet')
   }
