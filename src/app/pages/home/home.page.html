@@ -1,30 +1,3 @@
-<!-- <ion-header class="ion-no-border">
-  <ion-toolbar class="tema">
-
-    <ion-button (click)="logout()" class="tema" slot="end">
-      <ion-icon name="log-out"></ion-icon>
-    </ion-button>
-    <ion-buttons slot="start">
-      <ion-back-button slot="start" defaultHref="main-menu" mode="ios" color="dark" text="Atras"></ion-back-button>
-    </ion-buttons>
-    <ion-title> Mi perfil </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content class="ion-padding inihf">
-  <div class="preview">
-    <ion-avatar (click)="changeImage()">
-      <img *ngIf="profile?.imageUrl; else placeholder_avatar;" [src]="profile.imageUrl" />
-
-      <ng-template #placeholder_avatar>
-        <div class="fallback">
-          <p>Selecciona Foto</p>
-        </div>
-      </ng-template>
-    </ion-avatar>
-  </div>
-</ion-content>
- -->
 <ion-header class="ion-no-border">
   
   <ion-toolbar class="tema">
@@ -48,7 +21,7 @@
         <img *ngIf="profile?.imageUrl; else placeholder_avatar;" [src]="profile.imageUrl" />
         <ng-template #placeholder_avatar>
           <div class="fallback">
-            <p>Selecciona Foto</p>
+            <p></p>
           </div>
         </ng-template>
       </ion-avatar>

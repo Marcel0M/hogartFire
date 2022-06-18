@@ -1,11 +1,11 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild  } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
 import { NavController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
 import { AvatarService } from 'src/app/services/avatar.service';
 
-
+import { GoogleMap } from '@capacitor/google-maps';
 import { environment } from 'src/environments/environment';
 import { InteractionService } from 'src/app/services/interaction.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
@@ -18,6 +18,15 @@ import { reporte } from 'src/app/models/models';
   styleUrls: ['./profile-pet.page.scss'],
 })
 export class ProfilePetPage implements OnInit {
+
+     @ViewChild('map') mapRef: ElementRef<HTMLElement>;
+  newMap: GoogleMap;
+  center: any = {
+    lat: -33.404015,
+    lng: -70.7400601,
+  };
+
+  markerId: string;
 
   petPerfil : reporte = {
     id: "",
@@ -58,23 +67,68 @@ export class ProfilePetPage implements OnInit {
 
     
     this.interaction.cargarLoading();
+    this.actualizarDatosPet();
+  }
+
+
+  actualizarDatosPet(){
     const pet = this.firestore.getPet();
-    console.log('VAMOS A MOSTRAR ESTE ->', pet);
+    this.petPerfil.id = pet.id;
+    this.petPerfil.uid = pet.uid;
+    this.petPerfil.color = pet.color;
+    this.petPerfil.raza = pet.raza;
+    this.petPerfil.sexo = pet.sexo;
+    this.petPerfil.situacion = pet.situacion;
+    this.petPerfil.tamano = pet.tamano;
+    this.petPerfil.temperamento = pet.temperamento;
+    this.petPerfil.tipo = pet.tipo;
+    this.petPerfil.url = pet.url;
+    this.petPerfil.lat = pet.lat;
+    this.petPerfil.lon = pet.lon;
   }
 
-   //FUNCION QUE CARGA PAGINA
-   async presentLoading() {
-    const loading = await this.loadingController.create({
-      cssClass: 'my-custom-class',
-      message: 'Cargando...',
-      duration: 1500,
-      spinner: "bubbles"
+
+ ngAfterViewInit() {
+    this.createMap();
+  }
+  
+  //FUNCION CREAR MAPA
+  async createMap() {
+    this.newMap = await GoogleMap.create({
+      id: 'capacitor-google-maps',
+      element: this.mapRef.nativeElement,
+      apiKey: environment.apiKeyMaps,
+      config: {
+        center: this.center,
+        zoom: 8,
+      },
     });
-    await loading.present();
 
-    const { role, data } = await loading.onDidDismiss();
-    console.log('HOGAR-TEMPORAL: CARGA FINALIZADA');
+    this.addMarker(this.center.lat, this.center.lng);
   }
+
+  //AGREGAR MARCA AL MAPA
+  async addMarker(lat, lng) {
+    this.markerId = await this.newMap.addMarker({
+     coordinate: {
+       lat: lat,
+       lng: lng,
+     },
+     title: "Hogar-Temporal",
+     snippet: "Hogar-Temporal",
+     draggable: true
+    });
+  }
+  //REMUEVE MARCA DEL MAPA
+  async removeMarker() {
+    await this.newMap.removeMarker(this.markerId);
+  } 
+
+  //FUNCION CERRAR SESION
+  /* async logout() {
+    await this.authService.logout();
+    this.router.navigateByUrl('login', { replaceUrl: true });
+  } */
 
 
   //FUNCIONES NAVEGACION
@@ -82,32 +136,5 @@ export class ProfilePetPage implements OnInit {
     this.router.navigate(['/home']);
     this.navController.navigateRoot('home')
   }
-
-
-  cargarReportes(){
-    this.firestore.getCollection<reporte>('reportes').subscribe( res => {
-      console.log('HOGAR-TEMPORAL: Esta es la coleccion: ', res);
-      this.Reportes = res;
-    })
-  }
-
-  /* editPet() {
-    this.firestore.readPet
-  } */
-
-  /* obtenerPet() {
-    this.firestore.getPet().( (res)=> {
-      console.log("LECTURA DATOS: ", res)
-      this.petPerfil.tipo = res.tipo;
-      this.petPerfil.sexo = res.sexo;
-      this.petPerfil.raza = res.raza;
-      this.petPerfil.color = res.color;
-      this.petPerfil.temperamento = res.temperamento;
-      this.petPerfil.tamano = res.tamano;
-      this.petPerfil.lat = res.lat;
-      this.petPerfil.lon = res.lon;
-      this.petPerfil.situacion = res.situacion;
-    })
-  } */
 
 }

@@ -12,6 +12,24 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding inihf">
 
+
+
+<ion-content class="ion-padding inihf">
+  <ion-card>
+    <img class="image"  [src]="petPerfil.url">
+    <ion-card-header>
+      <ion-card-subtitle>{{petPerfil.situacion}}</ion-card-subtitle>
+      <ion-card-title>{{petPerfil.tipo}} {{petPerfil.sexo}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      {{petPerfil.tipo}}
+    </ion-card-content>
+  </ion-card>
 </ion-content>
+
+<ion-content class="ion-padding inihf">
+  <capacitor-google-maps #map></capacitor-google-maps>
+</ion-content>
+
+ 
