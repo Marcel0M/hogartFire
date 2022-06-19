@@ -30,13 +30,13 @@ export class RegisterPetPage implements OnInit {
     tamano: "",
     situacion: "",
     lat: 0,
-    lon: 0,
+    lng: 0,
   }
 
   randomId = "";
   uid = '';
   lat = 0;
-  lon = 0;
+  lng = 0;
   alt : number;
   accur: number;
   options : GeolocationOptions;
@@ -62,7 +62,7 @@ export class RegisterPetPage implements OnInit {
   
       this.geolocation.getCurrentPosition(this.options).then((resp) => {
         this.lat = resp.coords.latitude;
-        this.lon = resp.coords.longitude;
+        this.lng = resp.coords.longitude;
         console.log('MASCOTA: Latitud : ', resp.coords.latitude);
         console.log('MASCOTA: Longitud: ', resp.coords.longitude);
       }).catch((error) => {
@@ -122,7 +122,7 @@ export class RegisterPetPage implements OnInit {
     const usuario = this.authService.test() 
     this.data.uid = usuario;
     this.data.lat = this.lat;
-    this.data.lon = this.lon;
+    this.data.lng = this.lng;
     this.data.id = token;
     this.firestore.createDocument(this.data, path, token).then( (res) => {
       console.log('HOGAR-TEMPORAL: ID ASIGNADO A ESTE REPORTE: ', token);

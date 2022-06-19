@@ -28,7 +28,7 @@ export interface reporte{
     temperamento: string;
     tamano: string; 
     lat: number;
-    lon: number;
+    lng: number;
     situacion: string;
     /* imageUrl: Storage; */
 }
@@ -48,5 +48,5 @@ export interface hogar{
     cantidad: string;//cantidad mascotas-crear contador quizas
     disponibilidad: string; //Si-No 
     lat: number;
-    lon: number;
+    lng: number;
 }

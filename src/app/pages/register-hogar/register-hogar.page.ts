@@ -29,13 +29,13 @@ export class RegisterHogarPage implements OnInit {
     cantidad: "",//cantidad mascotas-crear contador quizas
     disponibilidad: "", //Si-No 
     lat: 0,
-    lon: 0,
+    lng: 0,
   }
 
   randomId = "";
   uid = '';
   lat = 0;
-  lon = 0;
+  lng = 0;
   alt : number;
   accur: number;
   options : GeolocationOptions;
@@ -62,7 +62,7 @@ export class RegisterHogarPage implements OnInit {
   
       this.geolocation.getCurrentPosition(this.options).then((resp) => {
         this.lat = resp.coords.latitude;
-        this.lon = resp.coords.longitude;
+        this.lng = resp.coords.longitude;
         console.log('HOGAR-TEMPORAL: Latitud : ', resp.coords.latitude);
         console.log('HOGAR-TEMPORAL: Longitud: ', resp.coords.longitude);
       }).catch((error) => {
@@ -121,7 +121,7 @@ export class RegisterHogarPage implements OnInit {
     const usuario = this.authService.test() 
     this.data.uid = usuario;
     this.data.lat = this.lat;
-    this.data.lon = this.lon;
+    this.data.lng = this.lng;
     this.data.id = token;
     this.firestore.createDocument(this.data, path, token).then( (res) => {
       console.log('HOGAR-TEMPORAL: ID ASIGNADO A HOGAR TEMPORAL: ', token);

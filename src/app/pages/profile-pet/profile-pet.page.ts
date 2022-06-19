@@ -40,7 +40,7 @@ export class ProfilePetPage implements OnInit {
     temperamento: "",
     tamano: "",
     lat: 0,
-    lon: 0,
+    lng: 0,
     situacion: ""
   }
   ruta: string = '';
@@ -85,7 +85,7 @@ export class ProfilePetPage implements OnInit {
     this.petPerfil.tipo = pet.tipo;
     this.petPerfil.url = pet.url;
     this.petPerfil.lat = pet.lat;
-    this.petPerfil.lon = pet.lon;
+    this.petPerfil.lng = pet.lng;
   }
 
 
@@ -112,8 +112,8 @@ export class ProfilePetPage implements OnInit {
   async addMarker(lat, lng) {
     this.markerId = await this.newMap.addMarker({
      coordinate: {
-       lat: lat,
-       lng: lng,
+       lat: this.petPerfil.lat,
+       lng: this.petPerfil.lng,
      },
      title: "Hogar-Temporal",
      snippet: "Hogar-Temporal",
