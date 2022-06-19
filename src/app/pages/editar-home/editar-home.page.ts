@@ -47,6 +47,13 @@ export class EditarHomePage implements OnInit {
 
   ngOnInit() {
     this.interaction.cargarLoading();
+    this.getUsuarios();
+    this.obtenerDatos()
+  }
+
+
+  getUsuarios(){
+    this.firestore.readCollection()
   }
 
 
@@ -89,5 +96,21 @@ export class EditarHomePage implements OnInit {
       console.log('HOGAR-TEMPORAL: SE EDITO UNA PERSONA EXITOSAMENTE: ', res);
     });
     this.router.navigateByUrl('home', { replaceUrl: true });
+  }
+
+
+  obtenerDatos(){
+    const id = this.authService.test() 
+    this.firestore.getDoc<users>('users', id).subscribe( (res)=> {
+      console.log("LECTURA DATOS: ", res)
+      this.data.nombre = res.nombre;
+      this.data.correo = res.correo;
+      this.data.apellido = res.apellido;
+      this.data.sexo = res.sexo;
+      this.data.fecha_nacimiento = res.fecha_nacimiento;
+      this.data.direccion = res.direccion;
+      this.data.ciudad = res.ciudad;
+      this.data.region = res.region;
+    })
   }
 }

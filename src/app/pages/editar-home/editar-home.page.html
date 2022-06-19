@@ -30,77 +30,66 @@
   <ion-list lines="full" mode="ios">
     <ion-item>
       <ion-label>Sexo</ion-label>
-      <ion-select [(ngModel)]="data.sexo">
-        <ion-select-option value="Hombre">Hombre</ion-select-option>
-        <ion-select-option value="Mujer">Mujer</ion-select-option>
+      <ion-select [(ngModel)]="data.sexo" placeholder= {{data.sexo}}>
+        <ion-select-option value="Hombre">Masculino</ion-select-option>
+        <ion-select-option value="Mujer">Femenino</ion-select-option>
+        <ion-select-option value="Otro">Otro</ion-select-option>
       </ion-select>
     </ion-item>
     
     <ion-item>
       <ion-label>
         <ion-text>Nombre</ion-text>
-        <ion-input color="dark" type="text" [(ngModel)]="data.nombre"></ion-input>
+        <ion-input color="dark" type="text" [(ngModel)]="data.nombre" placeholder= {{data.nombre}}></ion-input>
       </ion-label>
     </ion-item>
 
     <ion-item>
       <ion-label>
         <ion-text>Apellido</ion-text>
-        <ion-input color="dark" type="text" [(ngModel)]="data.apellido"></ion-input>
+        <ion-input color="dark" type="text" [(ngModel)]="data.apellido" placeholder= {{data.apellido}}></ion-input>
       </ion-label>
     </ion-item>
 
     <ion-item>
       <ion-label>
         <ion-text>Email</ion-text>
-        <ion-input color="dark" type="text" [(ngModel)]="data.correo"></ion-input>
+        <ion-input color="dark" type="email" [(ngModel)]="data.correo" placeholder= {{data.correo}}></ion-input>
       </ion-label>
     </ion-item>
 
     <ion-item>
       <ion-label>
         <ion-text>Fecha Nacimiento</ion-text>
-        <ion-input color="dark" type="text" [(ngModel)]="data.fecha_nacimiento"></ion-input>
+        <ion-input color="dark" type="date" [(ngModel)]="data.fecha_nacimiento" placeholder= {{data.fecha_nacimiento}}></ion-input>
       </ion-label>
     </ion-item>
 
     <ion-item>
       <ion-label>
         <ion-text>Region</ion-text>
-        <ion-input color="dark" type="text" [(ngModel)]="data.region"></ion-input>
+        <ion-input color="dark" type="text" [(ngModel)]="data.region" placeholder= {{data.region}}></ion-input>
       </ion-label>
     </ion-item>
 
     <ion-item>
       <ion-label>
         <ion-text>Ciudad</ion-text>
-        <ion-input color="dark" type="text" [(ngModel)]="data.ciudad"></ion-input>
+        <ion-input color="dark" type="text" [(ngModel)]="data.ciudad" placeholder= {{data.ciudad}}></ion-input>
       </ion-label>
     </ion-item>
 
     <ion-item>
       <ion-label>
         <ion-text>Direccion</ion-text>
-        <ion-input color="dark" type="text" [(ngModel)]="data.direccion"></ion-input>
+        <ion-input color="dark" type="text" [(ngModel)]="data.direccion" placeholder= {{data.direccion}}></ion-input>
       </ion-label>
     </ion-item>
 
   </ion-list>
   <ion-button (click)="editarUsuario()" shape="round" expand="block" color="danger">
-    <ion-icon slot="end" name="log-out"></ion-icon>
+    <ion-icon slot="end" name="newspaper-outline"></ion-icon>
     Editar
   </ion-button>
 </ion-content>
 
-<!-- <ion-footer class="ion-no-border">
-  <ion-toolbar>
-    <ion-title></ion-title>
-    <ion-title></ion-title>
-    <ion-title></ion-title>
-    <ion-button (click)="logout()" shape="round" expand="block" color="danger">
-      <ion-icon slot="end" name="log-out"></ion-icon>
-      CERRAR SESION
-    </ion-button>
-  </ion-toolbar>
-</ion-footer>
- -->

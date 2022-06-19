@@ -65,6 +65,11 @@
   </ion-item>
 
   <ion-item class="ion-padding tema">
+    <ion-label class="letra-input" position="floating">Direccion</ion-label>
+    <ion-input [(ngModel)]="data.direccion" placeholder="ej. Santa Rosa 782, Santiago" type="text"></ion-input>
+  </ion-item>
+
+  <ion-item class="ion-padding tema">
     <ion-label class="letra-input" position="floating">Cantidad de mascotas</ion-label>
     <ion-input [(ngModel)]="data.cantidad" placeholder="0" type="number"></ion-input>
   </ion-item>

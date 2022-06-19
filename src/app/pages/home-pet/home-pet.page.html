@@ -3,9 +3,6 @@
       <ion-avatar (click)="toHome()" slot="end">
         <img *ngIf="profile?.imageUrl; else placeholder_avatar;" [src]="profile.imageUrl" class="avatar"/>
       </ion-avatar>
-      <ion-button (click)="toRegisterHogar()">
-        <ion-icon slot="icon-only" name="home"></ion-icon>
-      </ion-button>
       <ng-template #placeholder_avatar></ng-template>
     
     <ion-title>Hogares Temporales</ion-title>
@@ -18,5 +15,12 @@
 <ion-content class="ion-padding inihf">
 <capacitor-google-maps #map></capacitor-google-maps>
 
+<ion-fab vertical="bottom" horizontal="center" slot="fixed">
+  <ion-fab-button (click)="toRegisterHogar()" color="warning">
+    <ion-icon name="home"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+
 
 </ion-content>
+

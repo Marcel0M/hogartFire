@@ -44,6 +44,7 @@ export interface hogar{
     metraje: string;
     patio: string;//Si-No
     seguridad: string;//Si-No
+    direccion: string;
     cantidad: string;//cantidad mascotas-crear contador quizas
     disponibilidad: string; //Si-No 
     lat: number;

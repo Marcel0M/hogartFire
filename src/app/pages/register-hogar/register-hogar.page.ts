@@ -25,6 +25,7 @@ export class RegisterHogarPage implements OnInit {
     metraje: "",
     patio: "",//Si-No
     seguridad: "",//Si-No
+    direccion: "",//Si-No
     cantidad: "",//cantidad mascotas-crear contador quizas
     disponibilidad: "", //Si-No 
     lat: 0,
