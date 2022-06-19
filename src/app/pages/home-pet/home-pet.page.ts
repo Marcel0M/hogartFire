@@ -106,4 +106,9 @@ export class HomePetPage implements OnInit {
     this.navController.navigateRoot('home')
   }
 
+  toRegisterHogar() {
+    this.router.navigate(['/register-hogar']);
+    this.navController.navigateRoot('register-hogar')
+  }
+
 }

@@ -19,11 +19,15 @@
   <ion-card>
     <img class="image"  [src]="petPerfil.url">
     <ion-card-header>
-      <ion-card-subtitle>{{petPerfil.situacion}}</ion-card-subtitle>
-      <ion-card-title>{{petPerfil.tipo}} {{petPerfil.sexo}}</ion-card-title>
+      <ion-card-subtitle>{{petPerfil.tipo}}</ion-card-subtitle>
+      <ion-card-title>Situacion: {{petPerfil.situacion}}</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      {{petPerfil.tipo}}
+            Sexo: {{petPerfil.sexo}}<br>
+            Raza: {{petPerfil.raza}}<br>
+            Color: {{petPerfil.color}}<br>
+            Tamaño: {{petPerfil.tamano}}<br>
+            Temperamento: {{petPerfil.temperamento}}
     </ion-card-content>
   </ion-card>
 </ion-content>

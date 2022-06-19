@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-toolbar class="tema">
+    <ion-title>Registro Hogar Temporal</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home-pet" color="light" text="Atras"></ion-back-button>
+     </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="tema">
+
+  <ion-grid class="main-header">
+    <div align="center">
+      <ion-avatar (click)="changePhoto()">
+        <img class="image"  [src]="data.url">
+        <ng-template #placeholder_avatar>
+          <div class="fallback">
+            <p>Selecciona Foto</p>
+          </div>
+        </ng-template>
+      </ion-avatar>
+    </div>
+  </ion-grid>
+
+  <ion-item type="ios" class="ion-padding tema">
+    <ion-label>Tipo de hogar</ion-label>
+    <ion-select [(ngModel)]="data.tipoh">
+      <ion-select-option value="Casa">Casa</ion-select-option>
+      <ion-select-option value="Departamento">Departamento</ion-select-option>
+      <ion-select-option value="Parcela">Parcela</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item type="ios" class="ion-padding tema">
+    <ion-label>Tipo de mascota que puede recibir?</ion-label>
+    <ion-select [(ngModel)]="data.tipom">
+      <ion-select-option value="Perro">Perro</ion-select-option>
+      <ion-select-option value="Gato">Gato</ion-select-option>
+      <ion-select-option value="Ambos">Ambos</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item class="ion-padding tema">
+    <ion-label class="letra-input" position="floating">Metraje m2</ion-label>
+    <ion-input [(ngModel)]="data.metraje" placeholder="0" type="number"></ion-input>
+  </ion-item>
+
+  <ion-item type="ios" class="ion-padding tema">
+    <ion-label>Lugar de recreacion</ion-label>
+    <ion-select [(ngModel)]="data.patio">
+      <ion-select-option value="Patio">Patio</ion-select-option>
+      <ion-select-option value="Balcon">Balcon</ion-select-option>
+      <ion-select-option value="Sin Recreacion">Sin Recreacion</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item type="ios" class="ion-padding tema">
+    <ion-label>Seguridad hogar</ion-label>
+    <ion-select [(ngModel)]="data.seguridad">
+      <ion-select-option value="Malla">Malla</ion-select-option>
+      <ion-select-option value="Reja">Reja</ion-select-option>
+      <ion-select-option value="Cierre perimetral">Cierre perimetral</ion-select-option>
+      <ion-select-option value="Sin Seguridad">Sin Seguridad</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item class="ion-padding tema">
+    <ion-label class="letra-input" position="floating">Cantidad de mascotas</ion-label>
+    <ion-input [(ngModel)]="data.cantidad" placeholder="0" type="number"></ion-input>
+  </ion-item>
+
+  <ion-item type="ios" class="ion-padding tema">
+    <ion-label>Disponibilidad</ion-label>
+    <ion-select [(ngModel)]="data.disponibilidad">
+      <ion-select-option value="Si">Si</ion-select-option>
+      <ion-select-option value="No">No</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-button  (click)="registrarHogar()" color="warning" class="ion-margin letra-boton" expand="block">Registrar Hogar Temporal</ion-button>
+
+</ion-content>

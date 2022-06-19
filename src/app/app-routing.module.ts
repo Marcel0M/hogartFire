@@ -51,6 +51,10 @@ const routes: Routes = [
     path: 'editar-home',
     loadChildren: () => import('./pages/editar-home/editar-home.module').then( m => m.EditarHomePageModule)
   },
+  {
+    path: 'register-hogar',
+    loadChildren: () => import('./pages/register-hogar/register-hogar.module').then( m => m.RegisterHogarPageModule)
+  },
 
 ];
 

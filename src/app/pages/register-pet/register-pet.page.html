@@ -67,12 +67,20 @@
     <ion-input [(ngModel)]="data.color" type="text"></ion-input>
   </ion-item>
   <ion-item class="ion-padding tema">
-    <ion-label class="letra-input" position="floating">Temperamento</ion-label>
-    <ion-input [(ngModel)]="data.temperamento" type="text"></ion-input>
+    <ion-label>Temperamento</ion-label>
+    <ion-select [(ngModel)]="data.temperamento">
+      <ion-select-option value="Agresivo">Agresivo</ion-select-option>
+      <ion-select-option value="Timido">Timido</ion-select-option>
+      <ion-select-option value="Dócil">Dócil</ion-select-option>
+    </ion-select>
   </ion-item>
   <ion-item class="ion-padding tema">
-    <ion-label class="letra-input" position="floating">Tamaño</ion-label>
-    <ion-input [(ngModel)]="data.tamano" type="text"></ion-input>
+    <ion-label>Tamaño</ion-label>
+    <ion-select [(ngModel)]="data.tamano">
+      <ion-select-option value="Pequeño">Pequeño</ion-select-option>
+      <ion-select-option value="Mediano">Mediano</ion-select-option>
+      <ion-select-option value="Grande">Grande</ion-select-option>
+    </ion-select>
   </ion-item>
   <ion-item class="ion-padding tema">
     <ion-label class="letra-input" position="floating">Latitud</ion-label>

@@ -6,29 +6,27 @@ import { AuthService } from 'src/app/services/auth.service';
 import { AvatarService } from 'src/app/services/avatar.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { InteractionService } from 'src/app/services/interaction.service';
-import { reporte } from 'src/app/models/models';
+import { hogar } from 'src/app/models/models';
 import { Geolocation, GeolocationOptions } from '@awesome-cordova-plugins/geolocation/ngx';
 
-
-
 @Component({
-  selector: 'app-register-pet',
-  templateUrl: './register-pet.page.html',
-  styleUrls: ['./register-pet.page.scss'],
+  selector: 'app-register-hogar',
+  templateUrl: './register-hogar.page.html',
+  styleUrls: ['./register-hogar.page.scss'],
 })
-export class RegisterPetPage implements OnInit {
+export class RegisterHogarPage implements OnInit {
 
-  data: reporte = {
+  data:  hogar = {
     id: "",
     uid: "",
     url: "",
-    tipo: "",
-    sexo: "",
-    raza: "",
-    color: "",
-    temperamento: "",
-    tamano: "",
-    situacion: "",
+    tipoh: "",//Casa-Depto
+    tipom: "",//Perro-Gato-Ambos
+    metraje: "",
+    patio: "",//Si-No
+    seguridad: "",//Si-No
+    cantidad: "",//cantidad mascotas-crear contador quizas
+    disponibilidad: "", //Si-No 
     lat: 0,
     lon: 0,
   }
@@ -40,9 +38,11 @@ export class RegisterPetPage implements OnInit {
   alt : number;
   accur: number;
   options : GeolocationOptions;
-  pet = null;
+  hogar = null;
   newFile: any;
-  getPetImage = null;
+  getHogarImage = null;
+
+
 
   constructor(
     private avatarService: AvatarService,
@@ -53,9 +53,8 @@ export class RegisterPetPage implements OnInit {
     private interaction: InteractionService,
     private geolocation: Geolocation,
     private router: Router
-    
   ) 
-  {
+  { 
     this.options = {
       enableHighAccuracy : true
     };
@@ -63,14 +62,12 @@ export class RegisterPetPage implements OnInit {
       this.geolocation.getCurrentPosition(this.options).then((resp) => {
         this.lat = resp.coords.latitude;
         this.lon = resp.coords.longitude;
-        console.log('MASCOTA: Latitud : ', resp.coords.latitude);
-        console.log('MASCOTA: Longitud: ', resp.coords.longitude);
+        console.log('HOGAR-TEMPORAL: Latitud : ', resp.coords.latitude);
+        console.log('HOGAR-TEMPORAL: Longitud: ', resp.coords.longitude);
       }).catch((error) => {
-        console.log('MASCOTA: Error al obtener tu ubicacion', error);
+        console.log('HOGAR-TEMPORAL: Error al obtener tu ubicacion', error);
       });
-   }
-
-
+  }
 
   ngOnInit() {
     this.interaction.cargarLoading();
@@ -92,7 +89,7 @@ export class RegisterPetPage implements OnInit {
           spinner: "bubbles"
       });
       await loading.present();
-      const path = 'reportes';
+      const path = 'hogares';
       const generarToken = this.firestore.createRandomID();
       this.randomId = generarToken
       const result = await this.avatarService.uploadPhoto(image, path, this.randomId); 
@@ -105,19 +102,20 @@ export class RegisterPetPage implements OnInit {
           message: 'Hubo un problema al cargar tu foto',
           buttons: ['OK'],
         });
-        console.log("MASCOTA: ERROR AL CARGAR IMAGEN");
+        console.log("HOGAR-TEMPORAL: ERROR AL CARGAR IMAGEN");
         await alert.present();
       }
-      console.log("MASCOTA: IMAGEN CARGADA CORRECTAMENTE");
+      console.log("HOGAR-TEMPORAL: IMAGEN CARGADA CORRECTAMENTE");
 
-      this.avatarService.getPetImage(this.randomId).subscribe((data) => {
-        this.getPetImage = data;
+      this.avatarService.getHogarImage(this.randomId).subscribe((data) => {
+        this.getHogarImage = data;
       });
     }
   }
 
-   registrarPet(){
-    const path = 'reportes';
+
+  registrarHogar(){
+    const path = 'hogares';
     const token = this.randomId
     const usuario = this.authService.test() 
     this.data.uid = usuario;
@@ -125,10 +123,11 @@ export class RegisterPetPage implements OnInit {
     this.data.lon = this.lon;
     this.data.id = token;
     this.firestore.createDocument(this.data, path, token).then( (res) => {
-      console.log('HOGAR-TEMPORAL: ID ASIGNADO A ESTE REPORTE: ', token);
-      console.log('HOGAR-TEMPORAL: SE REGISTRO UNA MASCOTA EXITOSAMENTE: ', res);
-      //this.interaction.presentToast('SE REGISTRO UNA MASCOTA EXITOSAMENTE', 2000);
+      console.log('HOGAR-TEMPORAL: ID ASIGNADO A HOGAR TEMPORAL: ', token);
+      console.log('HOGAR-TEMPORAL: SE REGISTRO UN HOGAR TEMPORAL: ', res);
+      //this.interaction.presentToast('SE REGISTRO UN HOGAR TEMPORAL EXITOSAMENTE', 2000);
     });
-    this.router.navigateByUrl('main-menu', { replaceUrl: true });
+    this.router.navigateByUrl('home-pet', { replaceUrl: true });
   }
+
 }

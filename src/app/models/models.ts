@@ -32,3 +32,20 @@ export interface reporte{
     situacion: string;
     /* imageUrl: Storage; */
 }
+
+
+
+export interface hogar{
+    id: string;
+    uid: string;
+    url: string;
+    tipoh: string;//Casa-Depto
+    tipom: string;//Perro-Gato-Ambos
+    metraje: string;
+    patio: string;//Si-No
+    seguridad: string;//Si-No
+    cantidad: string;//cantidad mascotas-crear contador quizas
+    disponibilidad: string; //Si-No 
+    lat: number;
+    lon: number;
+}

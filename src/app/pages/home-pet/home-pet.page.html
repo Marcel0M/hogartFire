@@ -3,6 +3,9 @@
       <ion-avatar (click)="toHome()" slot="end">
         <img *ngIf="profile?.imageUrl; else placeholder_avatar;" [src]="profile.imageUrl" class="avatar"/>
       </ion-avatar>
+      <ion-button (click)="toRegisterHogar()">
+        <ion-icon slot="icon-only" name="home"></ion-icon>
+      </ion-button>
       <ng-template #placeholder_avatar></ng-template>
     
     <ion-title>Hogares Temporales</ion-title>

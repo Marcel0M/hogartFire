@@ -85,6 +85,13 @@ getPet() {
 }
 
 
+getHogarImage(token){
+  const userDocRef = doc(this.firestore, `hogares/${token}`);
+  return docData(userDocRef);
+
+}
+
+
 
 }
 

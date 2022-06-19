@@ -84,6 +84,8 @@ export class LoginPage implements OnInit {
     await loading.dismiss();
 
     if (user) {
+      //console.log('SE LOGEO ALGUIEN CORRECTAMENTE ');
+      //this.interaction.presentToast('Usuario Logeado Correctamente', 2000);
       this.router.navigateByUrl('/main-menu', { replaceUrl: true });
     } else {
       this.interaction.showAlert('Login Fallido', 'Por Favor intentalo nuevamente!', ['OK']);

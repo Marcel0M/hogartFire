@@ -12,6 +12,7 @@ import { FirestoreService } from 'src/app/services/firestore.service';
 import { reporte } from 'src/app/models/models';
 
 
+
 @Component({
   selector: 'app-profile-pet',
   templateUrl: './profile-pet.page.html',
