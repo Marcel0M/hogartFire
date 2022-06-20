@@ -62,7 +62,7 @@ export class HomePetPage implements OnInit {
         zoom: 8,
       },
     });
-
+    await this.newMap.enableCurrentLocation(true);
     this.addMarker(this.center.lat, this.center.lng);
   }
 

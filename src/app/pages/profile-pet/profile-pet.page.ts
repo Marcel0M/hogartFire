@@ -13,6 +13,7 @@ import { reporte } from 'src/app/models/models';
 
 
 
+
 @Component({
   selector: 'app-profile-pet',
   templateUrl: './profile-pet.page.html',
@@ -101,11 +102,16 @@ export class ProfilePetPage implements OnInit {
       apiKey: environment.apiKeyMaps,
       config: {
         center: this.center,
-        zoom: 8,
+        zoom: 10,
       },
     });
 
+    //await this.newMap.enableTrafficLayer(true);
+    await this.newMap.enableCurrentLocation(true);
+    //await this.newMap.enableClustering();
+
     this.addMarker(this.center.lat, this.center.lng);
+    
   }
 
   //AGREGAR MARCA AL MAPA
@@ -115,11 +121,13 @@ export class ProfilePetPage implements OnInit {
        lat: this.petPerfil.lat,
        lng: this.petPerfil.lng,
      },
-     title: "Hogar-Temporal",
-     snippet: "Hogar-Temporal",
-     draggable: true
+     title: this.petPerfil.situacion,
+     snippet: this.petPerfil.tipo,
+     draggable: false
     });
+    
   }
+
   //REMUEVE MARCA DEL MAPA
   async removeMarker() {
     await this.newMap.removeMarker(this.markerId);
