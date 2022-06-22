@@ -66,8 +66,6 @@ export class ProfilePetPage implements OnInit {
    }
 
   ngOnInit() {
-
-    
     this.interaction.cargarLoading();
     this.actualizarDatosPet();
   }
@@ -123,21 +121,20 @@ export class ProfilePetPage implements OnInit {
      },
      title: this.petPerfil.situacion,
      snippet: this.petPerfil.tipo,
-     draggable: false
+     draggable: false,
+     iconUrl: 'https://mt.google.com/vt/icon?psize=16&font=fonts/Roboto-Regular.ttf&color=ff330000&name=icons/spotlight/spotlight-waypoint-a.png&ax=44&ay=48&scale=1',
+     
+     /* icon: 'https://mt.google.com/vt/icon?psize=16&font=fonts/Roboto-Regular.ttf&color=ff330000&name=icons/spotlight/spotlight-waypoint-a.png&ax=44&ay=48&scale=1' */
     });
     
   }
 
+
+  
   //REMUEVE MARCA DEL MAPA
   async removeMarker() {
     await this.newMap.removeMarker(this.markerId);
   } 
-
-  //FUNCION CERRAR SESION
-  /* async logout() {
-    await this.authService.logout();
-    this.router.navigateByUrl('login', { replaceUrl: true });
-  } */
 
 
   //FUNCIONES NAVEGACION
