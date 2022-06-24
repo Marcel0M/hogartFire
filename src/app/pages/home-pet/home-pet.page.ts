@@ -108,20 +108,6 @@ export class HomePetPage implements OnInit {
     await this.newMap.removeMarker(this.markerId);
   }
 
-   //FUNCION QUE CARGA PAGINA
-   async presentLoading() {
-    const loading = await this.loadingController.create({
-      cssClass: 'my-custom-class',
-      message: 'Cargando...',
-      duration: 1500,
-      spinner: "bubbles"
-    });
-    await loading.present();
-
-    const { role, data } = await loading.onDidDismiss();
-    console.log('HOGAR-TEMPORAL: CARGA FINALIZADA');
-  }
-
 
   //FUNCIONES NAVEGACION
   toHome() {
