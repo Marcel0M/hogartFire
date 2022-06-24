@@ -35,6 +35,7 @@ getCollection<tipo>(path: string) {
   console.log("HOGAR-TEMPORAL: ", collection);
   return collection.valueChanges();
 }
+
 //FUNCION QUE EDITA DATOS DE USUARIO
 updateDoc(data: any, path: string, id: string) {
   const collection = this.firestore.collection(path);

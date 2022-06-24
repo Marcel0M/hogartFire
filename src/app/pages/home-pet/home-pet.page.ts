@@ -5,9 +5,11 @@ import { NavController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
 import { AvatarService } from 'src/app/services/avatar.service';
 import { InteractionService } from 'src/app/services/interaction.service';
-
+import { FirestoreService } from 'src/app/services/firestore.service';
 import { GoogleMap } from '@capacitor/google-maps';
 import { environment } from 'src/environments/environment';
+import { hogar } from 'src/app/models/models';
+import { __metadata } from 'tslib';
 
 
 
@@ -27,6 +29,8 @@ export class HomePetPage implements OnInit {
 
   markerId: string;
   profile = null;
+  cursosArr = [];
+  hogar : hogar[] = [];
 
   constructor(
     private router: Router,
@@ -34,7 +38,8 @@ export class HomePetPage implements OnInit {
     public navController: NavController,
     public loadingController: LoadingController,
     private authService: AuthService,
-    private interaction: InteractionService
+    private interaction: InteractionService,
+    private firestore: FirestoreService
   ) {
     this.avatarService.getUserProfile().subscribe((data) => {
       this.profile = data;
@@ -48,7 +53,26 @@ export class HomePetPage implements OnInit {
 
   ngAfterViewInit() {
     this.createMap();
+    this.cargarHogares();
+  
   }
+
+
+  cargarHogares(){
+    this.firestore.getCollection<hogar>('hogares').subscribe( res => {
+      console.log('HOGAR-TEMPORAL: Esta es la coleccion: ', res);
+      this.hogar = res;
+      
+      for ( let i = 0; i < res.length; i++){
+        const element = res[i];
+        let _lat = element.lat;
+        let _lng = element.lng;
+        this.addMarker(_lat, _lng);
+      }
+
+    })
+  }
+
 
 
   //FUNCION CREAR MAPA
@@ -75,7 +99,8 @@ export class HomePetPage implements OnInit {
      },
      title: "Hogar-Temporal",
      snippet: "Hogar-Temporal",
-     draggable: true
+     draggable: true,
+     iconUrl: 'https://mt.google.com/vt/icon?psize=16&font=fonts/Roboto-Regular.ttf&color=ff330000&name=icons/spotlight/spotlight-waypoint-a.png&ax=44&ay=48&scale=1',
     });
   }
   //REMUEVE MARCA DEL MAPA
