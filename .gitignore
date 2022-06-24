@@ -5,3 +5,5 @@ android
 www/common.js
 *.js
 *.js
+package-lock.json
+package.json
