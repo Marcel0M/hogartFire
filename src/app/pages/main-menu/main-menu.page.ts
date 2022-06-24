@@ -19,14 +19,6 @@ import { Console } from 'console';
 })
 export class MainMenuPage implements OnInit {
 
-  /* @ViewChild('map') mapRef: ElementRef<HTMLElement>;
-  newMap: GoogleMap;
-  center: any = {
-    lat: -33.404015,
-    lng: -70.7400601,
-  }; */
-
-  //markerId: string;
 
   ruta: string = '';
   profile = null;
@@ -50,63 +42,6 @@ export class MainMenuPage implements OnInit {
   ngOnInit() {
     this.interaction.cargarLoading();
     this.cargarReportes();
-  }
-
-  /* ngAfterViewInit() {
-    this.createMap();
-  }
-  
-  //FUNCION CREAR MAPA
-  async createMap() {
-    this.newMap = await GoogleMap.create({
-      id: 'capacitor-google-maps',
-      element: this.mapRef.nativeElement,
-      apiKey: environment.apiKeyMaps,
-      config: {
-        center: this.center,
-        zoom: 8,
-      },
-    });
-
-    this.addMarker(this.center.lat, this.center.lng);
-  }
-
-  //AGREGAR MARCA AL MAPA
-  async addMarker(lat, lng) {
-    this.markerId = await this.newMap.addMarker({
-     coordinate: {
-       lat: lat,
-       lng: lng,
-     },
-     title: "Hogar-Temporal",
-     snippet: "Hogar-Temporal",
-     draggable: true
-    });
-  }
-  //REMUEVE MARCA DEL MAPA
-  async removeMarker() {
-    await this.newMap.removeMarker(this.markerId);
-  } */
-
-  //FUNCION CERRAR SESION
-  /* async logout() {
-    await this.authService.logout();
-    this.router.navigateByUrl('login', { replaceUrl: true });
-  } */
-
-
-   //FUNCION QUE CARGA PAGINA
-   async presentLoading() {
-    const loading = await this.loadingController.create({
-      cssClass: 'my-custom-class',
-      message: 'Cargando...',
-      duration: 1500,
-      spinner: "bubbles"
-    });
-    await loading.present();
-
-    const { role, data } = await loading.onDidDismiss();
-    console.log('HOGAR-TEMPORAL: CARGA FINALIZADA');
   }
 
 

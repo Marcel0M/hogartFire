@@ -108,8 +108,6 @@ export class HomePetPage implements OnInit {
     await this.newMap.removeMarker(this.markerId);
   }
 
-
-
    //FUNCION QUE CARGA PAGINA
    async presentLoading() {
     const loading = await this.loadingController.create({
