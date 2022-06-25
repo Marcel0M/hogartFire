@@ -30,7 +30,7 @@ export class AvatarService {
     return docData(userDocRef);
   }
 
- 
+ ///PROBAR X ACA PROBLEMA
   async uploadImage(cameraFile: Photo) {
     const user = this.auth.currentUser;
     const path = `uploads/${user.uid}/profile.png`;

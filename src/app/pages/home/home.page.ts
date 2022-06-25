@@ -20,7 +20,7 @@ export class HomePage {
     nombre: "",
     apellido: "",
     direccion: "",
-    fecha_nacimiento: "",
+    fecha_nacimiento: null,
     sexo: "",
     reportes: 0,
     premios: 0,

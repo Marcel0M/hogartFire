@@ -1,4 +1,5 @@
 import { TestBed } from "@angular/core/testing";
+import { Timestamp } from "firebase/firestore";
 
 export interface users{
     uid: string;
@@ -6,7 +7,7 @@ export interface users{
     nombre: string;
     apellido: string;
     direccion: string;
-    fecha_nacimiento: string;
+    fecha_nacimiento: Timestamp;
     sexo: string;
     reportes: number;
     premios: number;
