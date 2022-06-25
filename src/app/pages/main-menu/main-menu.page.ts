@@ -42,6 +42,7 @@ export class MainMenuPage implements OnInit {
   ngOnInit() {
     this.interaction.cargarLoading();
     this.cargarReportes();
+    //this.borrarDocuTest();
   }
 
 
@@ -83,6 +84,10 @@ editPet(pet: reporte) {
 
   async testeandoID(){
     await this.authService.test()
+  }
+
+  borrarDocuTest() {
+    this.firestore.deleteDoc('reportes', 'PAuSHKLseHCvWlNFEUGx');
   }
 
 }

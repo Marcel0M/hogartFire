@@ -22,9 +22,11 @@ import { AvatarService } from './services/avatar.service';
 import { AuthService } from './services/auth.service';
 import { RegisterPetPage } from './pages/register-pet/register-pet.page'; //DECLARAR PARA EL CREATE Y PASAR ONINIT
 import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';//IMPORTACION PARA GOOGLE MAPS EN ANGULAR
 
 
 @NgModule({
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   declarations: [AppComponent],
   entryComponents: [],
   imports: [

@@ -64,6 +64,16 @@ export class HomePage {
     const id = this.authService.test() 
     this.firestore.getDoc<users>('users', id).subscribe( (res)=> {
       console.log("LECTURA DATOS: ", res)
+      if (res.nombre === '') {
+        this.perfil.nombre = 'Vacio';
+        this.perfil.correo = 'Vacio';
+        this.perfil.apellido = 'Vacio';
+        this.perfil.sexo = 'Vacio';
+        this.perfil.fecha_nacimiento = null;
+        this.perfil.direccion = 'Vacio';
+        this.perfil.ciudad = 'Vacio';
+        this.perfil.region = 'Vacio';
+      } else {
       this.perfil.nombre = res.nombre;
       this.perfil.correo = res.correo;
       this.perfil.apellido = res.apellido;
@@ -72,6 +82,8 @@ export class HomePage {
       this.perfil.direccion = res.direccion;
       this.perfil.ciudad = res.ciudad;
       this.perfil.region = res.region;
+    }
+
     })
   }
 }

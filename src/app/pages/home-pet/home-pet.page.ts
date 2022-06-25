@@ -99,7 +99,7 @@ export class HomePetPage implements OnInit {
      },
      title: "Hogar-Temporal",
      snippet: "Hogar-Temporal",
-     draggable: true,
+     draggable: false,
      iconUrl: 'https://mt.google.com/vt/icon?psize=16&font=fonts/Roboto-Regular.ttf&color=ff330000&name=icons/spotlight/spotlight-waypoint-a.png&ax=44&ay=48&scale=1',
     });
   }

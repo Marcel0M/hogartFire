@@ -7,6 +7,7 @@ import { AuthService } from './auth.service';
 import { finalize } from 'rxjs/operators';
 import { FirestoreService } from './firestore.service';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { updateDoc } from 'firebase/firestore';
 
 
 @Injectable({
@@ -44,7 +45,8 @@ export class AvatarService {
 
       const userDocRef = doc(this.firestore, `users/${uid}`);
       /* const userDocRef = doc(this.firestore, `users/${user.uid}`); */
-      await setDoc(userDocRef, {imageUrl, uid});
+      await updateDoc(userDocRef, {imageUrl})
+     /*  await setDoc(userDocRef, {imageUrl, uid}); */
       return true;
     } catch (e) {
       return null;

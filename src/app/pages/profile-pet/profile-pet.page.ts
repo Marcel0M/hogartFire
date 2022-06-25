@@ -42,7 +42,7 @@ export class ProfilePetPage implements OnInit {
     tamano: "",
     lat: 0,
     lng: 0,
-    situacion: ""
+    situacion: "",
   }
   ruta: string = '';
   profile = null;
