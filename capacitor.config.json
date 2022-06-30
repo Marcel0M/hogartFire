@@ -2,5 +2,12 @@
 	"appId": "io.ionic.starter",
 	"appName": "hogartFire",
 	"webDir": "www",
-	"bundledWebRuntime": false
+	"bundledWebRuntime": false,
+	"plugins": {
+		"GoogleAuth": {
+			"scopes": ["profile", "email"],
+			"serverClientId": "356056792213-loku7meacs2ih4pgkkrqq5pf02s16rqo.apps.googleusercontent.com",
+			"forceCodeForREfreshToken": true
+		}
+	}
 }

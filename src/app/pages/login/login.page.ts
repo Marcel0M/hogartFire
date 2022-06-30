@@ -6,6 +6,9 @@ import { AuthService } from '../../services/auth.service';
 import { InteractionService } from 'src/app/services/interaction.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { users } from 'src/app/models/models';
+import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
+import { isPlatform } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-login',
@@ -14,6 +17,8 @@ import { users } from 'src/app/models/models';
 })
 export class LoginPage implements OnInit {
   credentials: FormGroup;
+
+  user = null;
   
 
   perfil: users = {
@@ -39,7 +44,11 @@ export class LoginPage implements OnInit {
     private router: Router,
     private interaction: InteractionService,
     private firestore: FirestoreService
-  ) {}
+  ) {
+    if (!isPlatform('capacitor')) {
+      GoogleAuth.initialize();
+    }
+  }
 
   get email() {
     return this.credentials.get('email');
@@ -52,7 +61,7 @@ export class LoginPage implements OnInit {
   ngOnInit() {
     this.credentials = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]],
     });
   }
 
@@ -91,4 +100,21 @@ export class LoginPage implements OnInit {
       this.interaction.showAlert('Login Fallido', 'Por Favor intentalo nuevamente!', ['OK']);
     }
   }
+
+
+//INICIO SESION CON GOOGLE
+  async signIn() {
+    this.user = await GoogleAuth.signIn();
+    this.router.navigateByUrl('/main-menu')
+    console.log('user: ', this.user);
+  };
+  async refresh() {
+    const AuthCode = await GoogleAuth.refresh();
+    console.log('actualizar: ', AuthCode);
+    //{ accessToken: 'xxx', idToken: 'xxx'}
+  };
+  async signOut() {
+    await GoogleAuth.signOut();
+    this.user = null;
+  };
 }

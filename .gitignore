@@ -7,3 +7,6 @@ www/common.js
 *.js
 package-lock.json
 package.json
+*.js
+package-lock.json
+*.js
