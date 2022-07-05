@@ -62,7 +62,6 @@ export class HomePage {
   }
 
 
-  // FORMA ARCAICA DE REALIZAR LAS VALIDACIONES. SE DEBE ACTUALIZAR ESTE METODO SI O SI!
   obtenerDatos(){
     const id = this.authService.test() 
     this.firestore.getDoc<users>('users', id).subscribe( (res)=> {
@@ -76,76 +75,6 @@ export class HomePage {
         this.perfil.direccion = res.direccion;
         this.perfil.ciudad = res.ciudad;
         this.perfil.region = res.region;
-        this.perfil.reportes = res.reportes;
-      } else if (res.apellido === '') {
-        this.perfil.apellido = 'Vacio';
-        this.perfil.nombre = res.nombre;
-        this.perfil.correo = res.correo;
-        this.perfil.sexo = res.sexo;
-        this.perfil.fecha_nacimiento = res.fecha_nacimiento;
-        this.perfil.direccion = res.direccion;
-        this.perfil.ciudad = res.ciudad;
-        this.perfil.region = res.region;
-        this.perfil.reportes = res.reportes;
-      } else if (res.correo === '') {
-        this.perfil.correo = 'Vacio';
-        this.perfil.nombre = res.nombre;
-        this.perfil.apellido = res.apellido;
-        this.perfil.sexo = res.sexo;
-        this.perfil.fecha_nacimiento = res.fecha_nacimiento;
-        this.perfil.direccion = res.direccion;
-        this.perfil.ciudad = res.ciudad;
-        this.perfil.region = res.region;
-        this.perfil.reportes = res.reportes;
-      } else if (res.sexo === '') {
-        this.perfil.sexo = 'Vacio';
-        this.perfil.nombre = res.nombre;
-        this.perfil.correo = res.correo;
-        this.perfil.apellido = res.apellido;
-        this.perfil.fecha_nacimiento = res.fecha_nacimiento;
-        this.perfil.direccion = res.direccion;
-        this.perfil.ciudad = res.ciudad;
-        this.perfil.region = res.region;
-        this.perfil.reportes = res.reportes;
-      } else if (res.fecha_nacimiento === null) {
-        this.perfil.fecha_nacimiento = null;
-        this.perfil.nombre = res.nombre;
-        this.perfil.correo = res.correo;
-        this.perfil.apellido = res.apellido;
-        this.perfil.sexo = res.sexo;
-        this.perfil.direccion = res.direccion;
-        this.perfil.ciudad = res.ciudad;
-        this.perfil.region = res.region;
-        this.perfil.reportes = res.reportes;
-      } else if ( res.direccion === '') {
-        this.perfil.direccion = 'Vacio';
-        this.perfil.nombre = res.nombre;
-        this.perfil.correo = res.correo;
-        this.perfil.apellido = res.apellido;
-        this.perfil.sexo = res.sexo;
-        this.perfil.fecha_nacimiento = res.fecha_nacimiento;
-        this.perfil.ciudad = res.ciudad;
-        this.perfil.region = res.region;
-        this.perfil.reportes = res.reportes;
-      } else if (res.ciudad === '') {
-        this.perfil.ciudad = 'Vacio';
-        this.perfil.nombre = res.nombre;
-        this.perfil.correo = res.correo;
-        this.perfil.apellido = res.apellido;
-        this.perfil.sexo = res.sexo;
-        this.perfil.fecha_nacimiento = res.fecha_nacimiento;
-        this.perfil.direccion = res.direccion;
-        this.perfil.region = res.region;
-        this.perfil.reportes = res.reportes;
-      } else if ( res.region === '') {
-        this.perfil.region = 'Vacio'; 
-        this.perfil.nombre = res.nombre;
-        this.perfil.correo = res.correo;
-        this.perfil.apellido = res.apellido;
-        this.perfil.sexo = res.sexo;
-        this.perfil.fecha_nacimiento = res.fecha_nacimiento;
-        this.perfil.direccion = res.direccion;
-        this.perfil.ciudad = res.ciudad;
         this.perfil.reportes = res.reportes;
       } else {
       this.perfil.nombre = res.nombre;

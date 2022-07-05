@@ -129,8 +129,10 @@ export class ProfilePetPage implements OnInit {
      title: this.petPerfil.situacion,
      snippet: this.petPerfil.tipo,
      draggable: false,
+     /* opacity: 1, */
      iconUrl: 'https://mt.google.com/vt/icon?psize=16&font=fonts/Roboto-Regular.ttf&color=ff330000&name=icons/spotlight/spotlight-waypoint-a.png&ax=44&ay=48&scale=1',
      
+
      /* icon: 'https://mt.google.com/vt/icon?psize=16&font=fonts/Roboto-Regular.ttf&color=ff330000&name=icons/spotlight/spotlight-waypoint-a.png&ax=44&ay=48&scale=1' */
     });
     

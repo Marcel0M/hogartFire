@@ -26,7 +26,7 @@ export class InteractionService {
     this.showLoading();
     setTimeout(_ => {
       this.dismissLoading();
-    }, 2000);
+    }, 1000);
   }
 
 async presentToast(mensaje: string, duracion: number){

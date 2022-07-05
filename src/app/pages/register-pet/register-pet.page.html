@@ -82,15 +82,15 @@
       <ion-select-option value="Grande">Grande</ion-select-option>
     </ion-select>
   </ion-item>
-  <ion-item class="ion-padding tema">
-    <ion-label class="letra-input" position="floating">Latitud</ion-label>
-    <ion-input [(ngModel)]="data.lat" type="number" readonly>{{lat}}</ion-input>
+ <!--  <ion-item class="ion-padding tema">
+    <ion-label class="letra-input" position="floating" style="visibility: hidden;">Latitud</ion-label>
+    <ion-input [(ngModel)]="data.lat" type="number" readonly style="visibility: hidden;">{{lat}}</ion-input>
   </ion-item>
   <ion-item class="ion-padding tema">
-    <ion-label class="letra-input" position="floating">Longitud</ion-label>
-    <ion-input [(ngModel)]="data.lng" type="number" readonly>{{lng}}</ion-input>
+    <ion-label class="letra-input" position="floating" style="visibility: hidden;">Longitud</ion-label>
+    <ion-input [(ngModel)]="data.lng" type="number" readonly style="visibility: hidden;">{{lng}}</ion-input>
   </ion-item>
-
+ -->
   <ion-button  (click)="registrarPet()" color="warning" class="ion-margin letra-boton" expand="block">Registrar Mascota</ion-button>
 
 </ion-content>
