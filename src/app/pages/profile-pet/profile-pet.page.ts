@@ -4,7 +4,6 @@ import { LoadingController } from '@ionic/angular';
 import { NavController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
 import { AvatarService } from 'src/app/services/avatar.service';
-
 import { GoogleMap } from '@capacitor/google-maps';
 import { environment } from 'src/environments/environment';
 import { InteractionService } from 'src/app/services/interaction.service';
@@ -29,6 +28,7 @@ export class ProfilePetPage implements OnInit {
   };
 
   markerId: string;
+  perdido: boolean;
 
   petPerfil : reporte = {
     id: "",
@@ -85,6 +85,13 @@ export class ProfilePetPage implements OnInit {
     this.petPerfil.url = pet.url;
     this.petPerfil.lat = pet.lat;
     this.petPerfil.lng = pet.lng;
+
+    if(this.petPerfil.situacion === 'Perdido'){
+       this.perdido = true;
+    }else{
+      this.perdido = false;
+    }
+
   }
 
 
@@ -141,6 +148,20 @@ export class ProfilePetPage implements OnInit {
   toHome() {
     this.router.navigate(['/home']);
     this.navController.navigateRoot('home')
+  }
+
+
+  adoptarMascota(){
+    this.router.navigate(['/main-menu']);
+    this.navController.navigateRoot('main-menu')
+    this.firestore.deleteDoc('reportes', this.petPerfil.id)
+  }
+
+
+  encontrarMascota(){
+    this.router.navigate(['/main-menu']);
+    this.navController.navigateRoot('main-menu')
+    this.firestore.deleteDoc('reportes', this.petPerfil.id)
   }
 
 }

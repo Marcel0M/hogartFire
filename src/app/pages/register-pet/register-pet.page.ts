@@ -6,8 +6,9 @@ import { AuthService } from 'src/app/services/auth.service';
 import { AvatarService } from 'src/app/services/avatar.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { InteractionService } from 'src/app/services/interaction.service';
-import { reporte } from 'src/app/models/models';
+import { reporte, users } from 'src/app/models/models';
 import { Geolocation, GeolocationOptions } from '@awesome-cordova-plugins/geolocation/ngx';
+import { Subscription } from 'rxjs';
 
 
 
@@ -17,6 +18,9 @@ import { Geolocation, GeolocationOptions } from '@awesome-cordova-plugins/geoloc
   styleUrls: ['./register-pet.page.scss'],
 })
 export class RegisterPetPage implements OnInit {
+
+  nuevoReporte: Subscription;
+  cantidadReporte: reporte[]
 
   data: reporte = {
     id: "",
@@ -31,6 +35,20 @@ export class RegisterPetPage implements OnInit {
     situacion: "",
     lat: 0,
     lng: 0,
+  }
+
+  perfil: users = {
+    uid: "",
+    correo: "",
+    nombre: "",
+    apellido: "",
+    direccion: "",
+    fecha_nacimiento: null,
+    sexo: "",
+    reportes: 0,
+    premios: 0,
+    ciudad: "",
+    region: ""
   }
 
   randomId = "";
@@ -75,6 +93,7 @@ export class RegisterPetPage implements OnInit {
   ngOnInit() {
     this.interaction.cargarLoading();
     this.changePhoto();
+    this.cargarUsuario();
   }
 
 
@@ -116,6 +135,10 @@ export class RegisterPetPage implements OnInit {
     }
   }
 
+
+ 
+
+
    registrarPet(){
     const path = 'reportes';
     const token = this.randomId
@@ -124,11 +147,37 @@ export class RegisterPetPage implements OnInit {
     this.data.lat = this.lat;
     this.data.lng = this.lng;
     this.data.id = token;
+    this.enviarContadorReportes();
     this.firestore.createDocument(this.data, path, token).then( (res) => {
       console.log('HOGAR-TEMPORAL: ID ASIGNADO A ESTE REPORTE: ', token);
       console.log('HOGAR-TEMPORAL: SE REGISTRO UNA MASCOTA EXITOSAMENTE: ', res);
-      //this.interaction.presentToast('SE REGISTRO UNA MASCOTA EXITOSAMENTE', 2000);
     });
     this.router.navigateByUrl('main-menu', { replaceUrl: true });
   }
+
+
+  cargarUsuario(){
+    const usuario = this.authService.test() 
+    this.firestore.getDoc<users>('users', usuario).subscribe( (resUser)=> {
+      this.perfil.nombre = resUser.nombre;
+      this.perfil.correo = resUser.correo;
+      this.perfil.apellido = resUser.apellido;
+      this.perfil.sexo = resUser.sexo;
+      this.perfil.fecha_nacimiento = resUser.fecha_nacimiento;
+      this.perfil.direccion = resUser.direccion;
+      this.perfil.ciudad = resUser.ciudad;
+      this.perfil.region = resUser.region;
+      this.perfil.reportes = resUser.reportes;
+    });
+    
+  }
+
+  enviarContadorReportes() {
+    const usuario = this.authService.test() 
+    this.perfil.reportes = this.perfil.reportes + 1
+    this.firestore.updateDoc(this.perfil, 'users', usuario).then( (res2) => {
+      console.log('HOGAR-TEMPORAL: SE REGISTRO UNA MASCOTA EXITOSAMENTE: ', res2);
+    })
+  }
+
 }
