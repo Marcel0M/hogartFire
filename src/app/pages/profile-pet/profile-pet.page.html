@@ -31,12 +31,12 @@
 </ion-content>
 
 
-<ion-footer *ngIf="perdido" class="ion-no-border">
-  <ion-toolbar>
+<ion-footer *ngIf="perdido" class="ion-no-border inihf" style="background-color: brown; color: brown;">
+  <ion-toolbar class="inihf">
     <ion-title></ion-title>
     <ion-title></ion-title>
     <ion-title></ion-title>
-    <ion-button (click)="encontrarMascota()" shape="round" expand="block" color="danger">
+    <ion-button (click)="encontrarMascota()" shape="round" expand="block" color="warning">
       <ion-icon slot="end" name="log-out"></ion-icon>
       ENCONTRADO
     </ion-button>
@@ -44,12 +44,12 @@
 </ion-footer>
  
 
-<ion-footer *ngIf="!perdido" class="ion-no-border">
-  <ion-toolbar>
+<ion-footer *ngIf="!perdido" class="ion-no-border inihf" style="background-color: brown; color: brown;">
+  <ion-toolbar class="inihf">
     <ion-title></ion-title>
     <ion-title></ion-title>
     <ion-title></ion-title>
-    <ion-button (click)="adoptarMascota()" shape="round" expand="block" color="danger">
+    <ion-button (click)="adoptarMascota()" shape="round" expand="block" color="warning">
       <ion-icon slot="end" name="log-out"></ion-icon>
       ADOPTAR
     </ion-button>

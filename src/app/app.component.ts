@@ -22,7 +22,7 @@ export class AppComponent {
     });
   }
 
-
+  // PANTALLA DE CARGA
   watchLoading(){
     this.interactionService.watchLoading()
     .subscribe(loading => {
