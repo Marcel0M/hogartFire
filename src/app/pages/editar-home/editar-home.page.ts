@@ -85,6 +85,7 @@ export class EditarHomePage implements OnInit {
         await alert.present();
       }
       console.log("HOGAR-TEMPORAL: IMAGEN CARGADA CORRECTAMENTE");
+      this.interaction.presentToast('Se cambio foto de perfil', 1500);
     }
   }
 
@@ -96,6 +97,7 @@ export class EditarHomePage implements OnInit {
       console.log('HOGAR-TEMPORAL: SE EDITO UNA PERSONA EXITOSAMENTE: ', res);
     });
     this.router.navigateByUrl('home', { replaceUrl: true });
+    this.interaction.presentToast('Datos de perfil modificados', 1500);
   }
 
 

@@ -153,6 +153,7 @@ export class RegisterPetPage implements OnInit {
       console.log('HOGAR-TEMPORAL: SE REGISTRO UNA MASCOTA EXITOSAMENTE: ', res);
     });
     this.router.navigateByUrl('main-menu', { replaceUrl: true });
+    this.interaction.presentToast('Se registro una mascota correctamente', 1500);
   }
 
 

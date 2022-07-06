@@ -1,17 +1,17 @@
 ion-avatar {
-  width: 128px;
-  height: 128px;
+  width: 100px;
+  height: 100px;
 }
 
 .preview {
-  margin-top: 50px;
+  margin-top: 60px;
   display: flex;
   justify-content: center;
 }
 
 .fallback {
-  width: 128px;
-  height: 128px;
+  width: 90px;
+  height: 90px;
   border-radius: 50%;
   background: #bfbfbf;
 
@@ -38,8 +38,8 @@ ion-content {
       div {
           transform: translateY(2vh);
           ion-avatar {
-              width: 15vh;
-              height: 15vh;
+              width: 18vh;
+              height: 18vh;
               background: #df4767/* var(--ion-color-white) */;
               margin-bottom: 5px;
               border: 7px solid #df4767/* var(--ion-color-primary) */;

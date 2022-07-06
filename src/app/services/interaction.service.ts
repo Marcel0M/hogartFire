@@ -34,6 +34,7 @@ async presentToast(mensaje: string, duracion: number){
     message: mensaje,
     duration: duracion
   });
+  toast.present();
 }
 
 async showAlert(header, message, buttons) {

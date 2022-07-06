@@ -10,3 +10,4 @@ package.json
 *.js
 package-lock.json
 *.js
+*.json

@@ -129,6 +129,7 @@ export class RegisterHogarPage implements OnInit {
       //this.interaction.presentToast('SE REGISTRO UN HOGAR TEMPORAL EXITOSAMENTE', 2000);
     });
     this.router.navigateByUrl('home-pet', { replaceUrl: true });
+    this.interaction.presentToast('Se registro un hogar temporal', 1500);
   }
 
 }
