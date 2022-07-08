@@ -93,6 +93,7 @@ export class EditarHomePage implements OnInit {
     const path = 'users';
     const usuario = this.authService.test() 
     this.data.uid = usuario;
+    //this.data.reportes = ;
     this.firestore.updateDoc(this.data, path, usuario).then( (res) => {
       console.log('HOGAR-TEMPORAL: SE EDITO UNA PERSONA EXITOSAMENTE: ', res);
     });
@@ -106,13 +107,15 @@ export class EditarHomePage implements OnInit {
     this.firestore.getDoc<users>('users', id).subscribe( (res)=> {
       console.log("LECTURA DATOS: ", res)
       this.data.nombre = res.nombre;
-      this.data.correo = res.correo;
       this.data.apellido = res.apellido;
+      this.data.correo = res.correo;
       this.data.sexo = res.sexo;
       this.data.fecha_nacimiento = res.fecha_nacimiento;
       this.data.direccion = res.direccion;
       this.data.ciudad = res.ciudad;
       this.data.region = res.region;
+      this.data.reportes = res.reportes;
+      this.data.uid = res.uid;
     })
   }
 }

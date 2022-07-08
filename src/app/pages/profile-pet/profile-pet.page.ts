@@ -130,7 +130,7 @@ export class ProfilePetPage implements OnInit {
      snippet: this.petPerfil.tipo,
      draggable: false,
      /* opacity: 1, */
-     iconUrl: 'https://mt.google.com/vt/icon?psize=16&font=fonts/Roboto-Regular.ttf&color=ff330000&name=icons/spotlight/spotlight-waypoint-a.png&ax=44&ay=48&scale=1',
+     iconUrl: 'https://icons-for-free.com/download-icon-paw-1326548861677045856_32.png',
      
 
      /* icon: 'https://mt.google.com/vt/icon?psize=16&font=fonts/Roboto-Regular.ttf&color=ff330000&name=icons/spotlight/spotlight-waypoint-a.png&ax=44&ay=48&scale=1' */

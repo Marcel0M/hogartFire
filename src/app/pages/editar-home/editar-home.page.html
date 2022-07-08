@@ -18,11 +18,11 @@
         <img *ngIf="profile?.imageUrl; else placeholder_avatar;" [src]="profile.imageUrl" />
         <ng-template #placeholder_avatar>
           <div class="fallback">
-            <p>Selecciona Foto</p>
+            <p>Foto</p>
           </div>
         </ng-template>
       </ion-avatar>
-      <ion-text>Cambiar foto del perfil</ion-text>
+      <!-- <ion-text>Cambiar foto del perfil</ion-text> -->
     </div>
   </ion-grid>
 
