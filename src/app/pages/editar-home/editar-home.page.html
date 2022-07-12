@@ -66,17 +66,37 @@
     </ion-item>
 
     <ion-item>
-      <ion-label>
-        <ion-text>Region</ion-text>
-        <ion-input color="dark" type="text" [(ngModel)]="data.region" placeholder= {{data.region}}></ion-input>
-      </ion-label>
+      <ion-label>Region</ion-label>
+      <ion-select [(ngModel)]="data.region" placeholder= {{data.region}}>
+        <ion-select-option value="Región Metropolitana">Región Metropolitana</ion-select-option>
+        <ion-select-option value="Tarapacá">Tarapacá</ion-select-option>
+        <ion-select-option value="Antofagasta">Antofagasta</ion-select-option>
+        <ion-select-option value="Atacama">Atacama</ion-select-option>
+        <ion-select-option value="Coquimbo">Coquimbo</ion-select-option>
+        <ion-select-option value="Valparaíso">Valparaíso</ion-select-option>
+        <ion-select-option value="O'Higgins">O'Higgins</ion-select-option>
+        <ion-select-option value="El Maule">El Maule</ion-select-option>
+        <ion-select-option value="El Bío Bío">El Bío Bío</ion-select-option>
+        <ion-select-option value="La Araucanía">La Araucanía</ion-select-option>
+        <ion-select-option value="Los Lagos">Los Lagos</ion-select-option>
+        <ion-select-option value="Aysén">Aysén</ion-select-option>
+        <ion-select-option value="Magallanes y Antártica">Magallanes y Antártica</ion-select-option>
+        <ion-select-option value="Los Ríos">Los Ríos</ion-select-option>
+        <ion-select-option value="Arica y Parinacota">Arica y Parinacota</ion-select-option>
+        <ion-select-option value="Ñuble">Ñuble</ion-select-option>
+        
+      </ion-select>
     </ion-item>
 
     <ion-item>
-      <ion-label>
-        <ion-text>Ciudad</ion-text>
-        <ion-input color="dark" type="text" [(ngModel)]="data.ciudad" placeholder= {{data.ciudad}}></ion-input>
-      </ion-label>
+      <ion-label>Ciudad</ion-label>
+      <ion-select [(ngModel)]="data.ciudad" placeholder= {{data.ciudad}}>
+        <ion-select-option value="Santiago">Santiago</ion-select-option>
+        <ion-select-option value="Valparaiso">Valparaiso</ion-select-option>
+        <ion-select-option value="Valdivia">Valdivia</ion-select-option>
+        <ion-select-option value="Osorno">Osorno</ion-select-option>
+        <ion-select-option value="Punta Arenas">Punta Arenas</ion-select-option>   
+      </ion-select>
     </ion-item>
 
     <ion-item>
